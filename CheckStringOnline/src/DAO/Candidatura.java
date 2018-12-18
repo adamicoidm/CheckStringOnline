@@ -92,6 +92,7 @@ public class Candidatura {
 		fw.append(s1+"\n\n"+s);
 		sc.close();
 		fw.close();
+		//jklklkjljk
 	}
 	
 }
