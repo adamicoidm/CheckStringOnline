@@ -1,0 +1,7 @@
+Nome: Riccardo
+Cognome: Bussolino
+Data di Nascita: 18/12/1995
+Titolo di studio: Media Superiore
+Livello di esperienza: Middle
+Competenze tecniche: HTML CSS JAVA JAVASCRIPT ANGULAR
+Ultima esperienza: IDM Consulting
