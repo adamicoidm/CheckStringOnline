@@ -16,6 +16,16 @@ public class Candidatura {
 	 public Candidatura() {
 		 
 	 }
+	 /**
+	  * 
+	  * @param nome
+	  * @param cognome
+	  * @param dataNascita
+	  * @param titoloStudio
+	  * @param livelloEsperienza
+	  * @param competenze
+	  * @param ultimaEsperienza
+	  */
 	public Candidatura(String nome, String cognome, String dataNascita, String titoloStudio, String livelloEsperienza,
 			String competenze, String ultimaEsperienza) {
 		super();
