@@ -17,7 +17,7 @@ public class Candidatura {
 		 
 	 }
 	 /**
-	  * 
+	  * procedura
 	  * @param nome
 	  * @param cognome
 	  * @param dataNascita
