@@ -17,7 +17,7 @@ public class Candidatura {
 		 
 	 }
 	 /**
-	  * 
+	  * Ciao ragazzi 
 	  * @param nome
 	  * @param cognome
 	  * @param dataNascita
