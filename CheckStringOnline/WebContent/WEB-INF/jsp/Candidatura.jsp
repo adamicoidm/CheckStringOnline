@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
+<style><%@include file="/style.css"%></style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="ISO-8859-1">
 </head>
@@ -20,7 +20,7 @@
 // 				String email = user.getEmail();
 			%>
 		</div>
-		<form action="candidaturaCompletata" method="get">
+		<form action="addCandidatura" method="get">
 			Nome:<br> <input type="text" name="nome"
 				placeholder="Inserire il nome" autofocus><br>
 			<br> Cognome:<br> <input type="text" name="cognome"
