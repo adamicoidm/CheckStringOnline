@@ -17,7 +17,7 @@
 		<div id="LogData">
 			<%
 				Utente user = (Utente) request.getAttribute("utente");
-				String email = user.getEmail();
+// 				String email = user.getEmail();
 			%>
 		</div>
 		<form action="./candidaturaCompletata" method="post">
