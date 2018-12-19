@@ -34,6 +34,11 @@
 		<td>${dataNascita}</td>
 <%-- 	<td> <% String dataNascita = candidatura.getDataNascita(); out.print(dataNascita); %></td></tr> --%>
 	<tr>
+		<td>Numero di telefono</td>	
+		<td>${numTelefono}</td>
+<%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
+	</tr>
+		<tr>
 		<td>Titolo di Studio</td>	
 		<td>${titoloStudio}</td>
 <%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>

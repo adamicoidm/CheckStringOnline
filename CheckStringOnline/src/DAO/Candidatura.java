@@ -8,9 +8,10 @@ import java.util.Scanner;
 public class Candidatura {
 	String nome;
 	 String cognome;
-	 String dataNascita;
 	 String email;
+	 String dataNascita;
 	 String titoloStudio;
+	 String numTelefono;
 	 String livelloEsperienza;
 	 String competenze;
 	 String ultimaEsperienza;
@@ -31,13 +32,14 @@ public class Candidatura {
 	  */
 	 
 	 //push di ripristino
-	public Candidatura(String nome, String cognome, String dataNascita, String email,String titoloStudio, String livelloEsperienza,
+	public Candidatura(String nome, String cognome, String email, String dataNascita,String numTelefono,String titoloStudio, String livelloEsperienza,
 			String competenze, String ultimaEsperienza) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
-		this.dataNascita = dataNascita;
 		this.email= email;
+		this.dataNascita = dataNascita;
+		this.numTelefono=numTelefono;
 		this.titoloStudio = titoloStudio;
 		this.livelloEsperienza = livelloEsperienza;
 		this.competenze = competenze;
@@ -90,6 +92,12 @@ public class Candidatura {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getNumTelefono() {
+		return numTelefono;
+	}
+	public void setNumTelefono(String numTelefono) {
+		this.numTelefono = numTelefono;
 	}
 	public void StreamData(String s) throws IOException {
 		File file = new File("C:\\eclipse-workspace\\CheckStringOnline\\src\\DAO", "Candidature.txt");

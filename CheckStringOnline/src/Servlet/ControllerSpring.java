@@ -20,11 +20,13 @@ public class ControllerSpring extends HttpServlet {
 	   ModelMap model) {
 	      model.addAttribute("nome", candidatura.getNome());
 	      model.addAttribute("cognome", candidatura.getCognome());
-	      model.addAttribute("dataNascita",candidatura.getDataNascita());
 	      model.addAttribute("email",candidatura.getEmail());
+	      model.addAttribute("dataNascita",candidatura.getDataNascita());
+	      model.addAttribute("numTelefono",candidatura.getNumTelefono());
 	      model.addAttribute("titoloStudio",candidatura.getTitoloStudio());
 	      model.addAttribute("competenze",candidatura.getCompetenze());
 	      model.addAttribute("livelloEsperienza",candidatura.getLivelloEsperienza());
+	      model.addAttribute("ultimaEsperienza",candidatura.getUltimaEsperienza());
 		return "candidaturaCompletata";
 	   }
 	  
