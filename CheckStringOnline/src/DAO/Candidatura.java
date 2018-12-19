@@ -28,6 +28,8 @@ public class Candidatura {
 	  * @param competenze
 	  * @param ultimaEsperienza
 	  */
+	 
+	 //push di ripristino
 	public Candidatura(String nome, String cognome, String dataNascita, String titoloStudio, String livelloEsperienza,
 			String competenze, String ultimaEsperienza) {
 		super();
