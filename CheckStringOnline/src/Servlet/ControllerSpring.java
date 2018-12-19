@@ -21,7 +21,6 @@ public class ControllerSpring extends HttpServlet {
 	      model.addAttribute("nome", candidatura.getNome());
 	      model.addAttribute("cognome", candidatura.getCognome());
 	      model.addAttribute("dataNascita",candidatura.getDataNascita());
-	      model.addAttribute("email",candidatura.getEmail());
 	      model.addAttribute("titoloStudio",candidatura.getTitoloStudio());
 	      model.addAttribute("competenze",candidatura.getCompetenze());
 	      model.addAttribute("livelloEsperienza",candidatura.getLivelloEsperienza());
