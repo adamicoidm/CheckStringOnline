@@ -20,13 +20,15 @@
 // 				String email = user.getEmail();
 			%>
 		</div>
-		<form action="./candidaturaCompletata" method="get">
+		<form action="candidaturaCompletata" method="get">
 			Nome:<br> <input type="text" name="nome"
 				placeholder="Inserire il nome" autofocus><br>
 			<br> Cognome:<br> <input type="text" name="cognome"
 				placeholder="Inserire il cognome"><br>
 			<br> Data di nascita: <br> <input type="date"
 				name="dataNascita"><br>
+				E-mail:<br> <input type="email" name="email"
+				placeholder="Inserire la e-mail" autofocus><br>
 			<br> <label for="campo_studio">Titolo di studio </label><br>
 			<select id="campo_studio" name="titoloStudio">
 				<option disabled selected>-- Seleziona titolo di studio --
