@@ -62,6 +62,9 @@
 				name="Curriculum Vitae"><br> <br>
 			<br> <input id="buttonSubmit" type="submit" value="Invia Dati">
 		</form>
+		<form action="PanelControl">
+<input type="submit" value="PanelControl">
+</form>
 	</fieldset>
 </body>
 </html>
