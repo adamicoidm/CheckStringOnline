@@ -37,13 +37,6 @@ public class ControllerSpring extends HttpServlet {
 		return "Candidatura";
 	   }
 	  
-//	  @GetMapping(value = "/home")
-//	   public String home(@RequestParam("prova") String prova) {
-//		  System.out.println("Siamo passati al metodo home: "+prova);
-//		  
-//		return "Candidatura";
-//	   }
-
     public ControllerSpring() {
         super();
         // TODO Auto-generated constructor stub

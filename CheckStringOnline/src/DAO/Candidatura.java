@@ -156,5 +156,27 @@ public class Candidatura {
 			return false;
 		}
 	}
+	public ResultSet vediCandidature() throws ClassNotFoundException{
+		String url = "jdbc:postgresql://localhost:5433/postgres";
+		String user = "postgres";
+		String password = "admin";
+		Class.forName("org.postgresql.Driver");
+		try {
+			Connection connection = DriverManager.getConnection(url, user, password);
+			Statement statement = connection.createStatement();
+			ResultSet resultSet =  statement.executeQuery("SELECT * FROM candidatura WHERE stato='true'");
+			connection.close();
+			statement.close();
+			resultSet.close();
+			return resultSet;
+			
+		} catch (SQLException e) {
+			System.out.println("Connection failure.");
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
 
 }
