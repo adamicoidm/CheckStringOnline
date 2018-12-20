@@ -22,25 +22,25 @@
 		</div>
 		<form action="addCandidatura" method="get">
 				Nome:<br> <input type="text" name="nome"
-				placeholder="Inserire il nome" autofocus required><br>
+				placeholder="Inserire il nome" value="W" autofocus required><br>
 				<br> Cognome:<br> <input type="text" name="cognome"
-				placeholder="Inserire il cognome" required><br>
+				placeholder="Inserire il cognome" value="B" required><br>
 				<br>E-mail:<br> <input type="email" name="email"
-				placeholder="Inserire la e-mail" required><br>
+				placeholder="Inserire la e-mail" value="K@B" required><br>
 				<br> Data di nascita: <br> <input type="date"
 				name="dataNascita" required><br>
 				<br>Numero di telefono:<br> <input type="number" name="numTelefono"
-				placeholder="Inserire il numero di telefono" required><br>
+				placeholder="Inserire il numero di telefono" value="3" required><br>
 			<br> <label for="campo_studio">Titolo di studio </label><br>
 			<select id="campo_studio" name="titoloStudio" required>
 				<option disabled selected >-- Seleziona titolo di studio --
 				</option>
 				<option value="Nessuno">Nessuno</option>
 				<option value="Elementare">Elementare</option>
-				<option value="Media Inferiore">Media Inferiore</option>
-				<option value="Media Superiore">Media Superiore</option>
-				<option value="Laurea Triennale">Laurea Triennale</option>
-				<option value="laurea Successiva">Laurea Successiva</option>
+				<option value="Media_Inferiore">Media Inferiore</option>
+				<option value="Media_Superiore">Media Superiore</option>
+				<option value="Laurea_Triennale">Laurea Triennale</option>
+				<option value="Laurea_Successiva">Laurea Successiva</option>
 			</select><br>
 			<br> <label for="campo_lavoro">Livello esperienze:</label> <br>
 			<select id="campo_studio" name="livelloEsperienza" required>
@@ -52,11 +52,11 @@
 			</select><br>
 			<br> Competenze Tecniche:<br>
 			<textarea id="textArea" name="competenze" rows="5" cols="50"
-				placeholder="Inserire le competenze" required></textarea>
+				placeholder="Inserire le competenze" value="React" required></textarea>
 			<br>
 			<br> Ultima esperienza Lavorativa<br>
 			<textarea id="textArea" name="ultimaEsperienza" rows="5" cols="50"
-				placeholder="Inserire l'ultima esperienza lavorativa" required></textarea>
+				placeholder="Inserire l'ultima esperienza lavorativa" value="IDM" required></textarea>
 			<br>
 			<br> Allega Curriculum Vitae: <br> <input type="file"
 				name="Curriculum Vitae"><br> <br>

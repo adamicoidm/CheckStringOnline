@@ -17,7 +17,7 @@ public class ControllerSpring extends HttpServlet {
 
 	  @GetMapping(value = "/addCandidatura")
 	   public String addCandidatura(@ModelAttribute("/addCandidatura")Candidatura candidatura, 
-	   ModelMap model) {
+	   ModelMap model) throws ClassNotFoundException {
 	      model.addAttribute("nome", candidatura.getNome());
 	      model.addAttribute("cognome", candidatura.getCognome());
 	      model.addAttribute("email",candidatura.getEmail());
@@ -27,6 +27,7 @@ public class ControllerSpring extends HttpServlet {
 	      model.addAttribute("competenze",candidatura.getCompetenze());
 	      model.addAttribute("livelloEsperienza",candidatura.getLivelloEsperienza());
 	      model.addAttribute("ultimaEsperienza",candidatura.getUltimaEsperienza());
+	      candidatura.insertCandidatura();
 		return "candidaturaCompletata";
 	   }
 	  
