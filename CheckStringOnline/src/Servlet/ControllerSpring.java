@@ -2,6 +2,7 @@ package Servlet;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 
@@ -46,8 +47,8 @@ public class ControllerSpring extends HttpServlet {
 		return "VediCandidature";
 	}
 	@GetMapping(value = "/VediNuoveCandidature")
-	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ModelMap model) throws ClassNotFoundException, SQLException {
-		ArrayList<Candidatura> candidature = PanelControlQuery.vediNuoveCandidature();
+	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
+		List<Candidatura> candidature = PanelControlQuery.vediNuoveCandidature();
 		model.addAttribute("ListaCandidature", candidature);
 		return "VediCandidature";
 	}

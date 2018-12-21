@@ -52,11 +52,11 @@
 			</select><br>
 			<br> Competenze Tecniche:<br>
 			<textarea id="textArea" name="competenze" rows="5" cols="50"
-				placeholder="Inserire le competenze" value="React" required></textarea>
+				placeholder="Inserire le competenze"  required></textarea>
 			<br>
 			<br> Ultima esperienza Lavorativa<br>
 			<textarea id="textArea" name="ultimaEsperienza" rows="5" cols="50"
-				placeholder="Inserire l'ultima esperienza lavorativa" value="IDM" required></textarea>
+				placeholder="Inserire l'ultima esperienza lavorativa" required></textarea>
 			<br>
 			<br> Allega Curriculum Vitae: <br> <input type="file"
 				name="Curriculum Vitae"><br> <br>
