@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PanelControlQuery {
+public class CandidaturaDAO {
 
 	public static ArrayList<Candidatura> vediCandidature() throws ClassNotFoundException {
 		String url = "jdbc:postgresql://localhost:5433/postgres";
