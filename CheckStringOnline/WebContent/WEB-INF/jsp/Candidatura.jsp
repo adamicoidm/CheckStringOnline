@@ -28,14 +28,14 @@
 				<br>E-mail:<br> <input type="email" name="email"
 				placeholder="Inserire la e-mail" value="K@B" required><br>
 				<br> Data di nascita: <br> <input type="date"
-				name="dataNascita" required><br>
+				name="dataNascita" value="1955-05-03" required><br>
 				<br>Numero di telefono:<br> <input type="number" name="numTelefono"
 				placeholder="Inserire il numero di telefono" value="3" required><br>
-			<br> <label for="campo_studio">Titolo di studio </label><br>
+			<br><label for="campo_studio">Titolo di studio </label><br>
 			<select id="campo_studio" name="titoloStudio" required>
 				<option disabled selected >-- Seleziona titolo di studio --
 				</option>
-				<option value="Nessuno">Nessuno</option>
+				<option value="Nessuno" selected>Nessuno</option>
 				<option value="Elementare">Elementare</option>
 				<option value="Media_Inferiore">Media Inferiore</option>
 				<option value="Media_Superiore">Media Superiore</option>
@@ -46,7 +46,7 @@
 			<select id="campo_studio" name="livelloEsperienza" required>
 				<option disabled selected>-- Seleziona livello esperienza
 					--</option>
-				<option value="Junior">Junior</option>
+				<option value="Junior" selected>Junior</option>
 				<option value="Middle">Middle</option>
 				<option value="Senior">Senior</option>
 			</select><br>
