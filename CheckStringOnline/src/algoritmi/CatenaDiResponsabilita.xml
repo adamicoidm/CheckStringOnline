@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 
+	<bean id="jaro" class="Algoritmi.Jaro" scope="singleton">
+	<constructor-arg name="next" ref="huntMcIlroy"></constructor-arg> 
+	</bean>
+	
+	<bean id="huntMcIlroy" class="Algoritmi.HuntMcIlroy" scope="singleton">
+	<constructor-arg name="next" ref="equals"></constructor-arg> 
+	</bean>
+	
+	<bean id="editDistance2" class="Algoritmi.EditDistance" scope="singleton">
+	<constructor-arg name="next" ref="equals"></constructor-arg> 
+	</bean> -->
+	
+	<bean id="editDistance1" class="algoritmi.EditDistance" scope="singleton">
+	<constructor-arg name="c" ref="equals"></constructor-arg> 
+	<constructor-arg name="distanza" value="1" type="int"></constructor-arg> 
+	</bean>
+	
+	<bean id="equals" class="algoritmi.Equals" scope="singleton">
+<!-- 	<constructor-arg name="next" ref="checkStringDB"></constructor-arg> --> 
+	</bean>
+	
+	<!--  <bean id="checkStringDB" class="Algoritmi.CheckStringDB" scope="singleton">
+	</bean>-->
+	
+	
+</beans>
+

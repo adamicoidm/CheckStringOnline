@@ -146,23 +146,26 @@ public class Candidatura {
 
 	public boolean insertCandidatura() throws ClassNotFoundException {
 
-		String url = "jdbc:postgresql://localhost:5433/postgres";
-		String user = "postgres";
-		String password = "admin";
-		Class.forName("org.postgresql.Driver");
-		try {
-			Connection connection = DriverManager.getConnection(url, user, password);
-			Statement statement = connection.createStatement();
-			ResultSet resultSet =  statement.executeQuery("INSERT into candidatura(nome,cognome,email,data_nascita,num_telefono,titolo_studio,livello_esperienza,ultima_esperienza) VALUES ('"+nome+"','"+cognome+"','"+email+"','"+dataNascita+"','"+numTelefono+"','"+titoloStudio+"','"+livelloEsperienza+"','"+ultimaEsperienza+"')");
-			connection.close();
-			resultSet.close();
-			statement.close();
-			return true;
-		} catch (SQLException e) {
-			System.out.println("Connection failure.");
-			e.printStackTrace();
-			return false;
-		}
+		
+		CandidaturaDAO cDAO = new CandidaturaDAO();		
+		return cDAO.inserisciCandidatura(this);
+//		String url = "jdbc:postgresql://localhost:5433/postgres";
+//		String user = "postgres";
+//		String password = "admin";
+//		Class.forName("org.postgresql.Driver");
+//		try {
+//			Connection connection = DriverManager.getConnection(url, user, password);
+//			Statement statement = connection.createStatement();
+//			ResultSet resultSet =  statement.executeQuery("INSERT into candidatura(nome,cognome,email,data_nascita,num_telefono,titolo_studio,livello_esperienza,ultima_esperienza) VALUES ('"+nome+"','"+cognome+"','"+email+"','"+dataNascita+"','"+numTelefono+"','"+titoloStudio+"','"+livelloEsperienza+"','"+ultimaEsperienza+"')");
+//			connection.close();
+//			resultSet.close();
+//			statement.close();
+//			return true;
+//		} catch (SQLException e) {
+//			System.out.println("Connection failure.");
+//			e.printStackTrace();
+//			return false;
+//		}
 	}
 	
 
