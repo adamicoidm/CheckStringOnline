@@ -2,7 +2,7 @@ package DAO.test;
 
 import java.util.ArrayList;
 
-import DAO.SinonimiDAO;
+import DAO.PostgresSinonimiDAO;
 import DAO.Sinonimo;
 
 public class TestSinonimiDAO {
@@ -10,7 +10,7 @@ public class TestSinonimiDAO {
 	public static void main(String[] args) throws ClassNotFoundException {
 
 		int errors = 0;
-		SinonimiDAO s = new SinonimiDAO();
+		PostgresSinonimiDAO s = new PostgresSinonimiDAO();
 
 		System.out.println("Instanziazione Funzionante!\n\n");
 
@@ -45,7 +45,7 @@ public class TestSinonimiDAO {
 
 		System.out.println("METODO: rimuoviCompetenza PARAMETRI: " + sinonimo + "\n");
 		s.rimuoviSinonimo(sinonimo);
-		if (s.getSinonimo(sinonimo).length() == 0) {
+		if (s.getSinonimo(sinonimo) == null) {
 			System.out.println("La parola " + sinonimo + " e' stata rimossa");
 		} else {
 			System.err.println("Rimozione Fallita");

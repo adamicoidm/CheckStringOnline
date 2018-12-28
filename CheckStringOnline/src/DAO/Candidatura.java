@@ -147,7 +147,7 @@ public class Candidatura {
 	public boolean insertCandidatura() throws ClassNotFoundException {
 
 		
-		CandidaturaDAO cDAO = new CandidaturaDAO();		
+		PostgreCandidaturaDAO cDAO = new PostgreCandidaturaDAO();		
 		return cDAO.inserisciCandidatura(this);
 //		String url = "jdbc:postgresql://localhost:5433/postgres";
 //		String user = "postgres";

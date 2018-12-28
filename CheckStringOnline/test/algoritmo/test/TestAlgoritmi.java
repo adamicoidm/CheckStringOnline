@@ -14,7 +14,8 @@ public class TestAlgoritmi {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/algoritmi/CatenaDiResponsabilita.xml");
 		
 
-		String s = "Isole Vergini Britanni";
+//		String s = "Isole Vergini Britanni";
+		String s = "aaaaaaaaaaaaaaaa"; //non trova niente ma fa vedere che algoritmi ci sono
 		
 
 		Equals CATENADIANDROMEDA = (Equals) context.getBean("equals");	

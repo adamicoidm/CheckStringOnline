@@ -2,13 +2,13 @@ package DAO.test;
 
 import java.util.ArrayList;
 
-import DAO.CompetenzeDAO;
+import DAO.PostgresCompetenzeDAO;
 
 public class TestCompetenzeDAO {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		int errors = 0;
-		CompetenzeDAO c = new CompetenzeDAO();
+		PostgresCompetenzeDAO c = new PostgresCompetenzeDAO();
 
 		System.out.println("Instanziazione Funzionante!\n\n");
 
@@ -44,7 +44,7 @@ public class TestCompetenzeDAO {
 
 		System.out.println("METODO: rimuoviCompetenza PARAMETRI: " + competenza + "\n");
 		c.rimuoviCompetenza(competenza);
-		if (c.getCompetenza(competenza).length() == 0) {
+		if (c.getCompetenza(competenza) == null) {
 			System.out.println("La parola " + competenza + " e' stata rimossa");
 
 		} else {

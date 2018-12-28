@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import DAO.Candidatura;
-import DAO.CandidaturaDAO;
+import DAO.PostgreCandidaturaDAO;
 
 /**
  * Servlet implementation class Controller
@@ -39,7 +39,7 @@ public class ControllerSpring extends HttpServlet {
 
 	@GetMapping(value = "/VediCandidature")
 	public String vediCandidature(@ModelAttribute("/VediCandidature") ModelMap model) throws ClassNotFoundException, SQLException {
-		CandidaturaDAO c = new CandidaturaDAO();
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		ArrayList<Candidatura> candidature = c.vediCandidature(); 
 
 		model.addAttribute("ListaCandidature", candidature);
@@ -48,7 +48,7 @@ public class ControllerSpring extends HttpServlet {
 	}
 	@GetMapping(value = "/VediNuoveCandidature")
 	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
-		CandidaturaDAO c = new CandidaturaDAO();
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		List<Candidatura> candidature = c.vediNuoveCandidature();
 		model.addAttribute("ListaCandidature", candidature);
 		return "VediCandidature";

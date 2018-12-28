@@ -3,14 +3,14 @@ package DAO.test;
 import java.util.ArrayList;
 
 import DAO.Candidatura;
-import DAO.CandidaturaDAO;
+import DAO.PostgreCandidaturaDAO;
 
 public class TestCandidaturaDAO {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		int errors = 0;
 
-		CandidaturaDAO c = new CandidaturaDAO();
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 
 		System.out.println("Instanziazione Funzionante!\n\n");
 		

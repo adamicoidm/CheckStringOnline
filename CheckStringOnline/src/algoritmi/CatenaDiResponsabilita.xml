@@ -32,9 +32,16 @@
 	</bean> 
 	
 	<bean id="jaro" class="algoritmi.Jaro" scope="singleton">
-<!--  		<constructor-arg name="c" ref="editDistance1"></constructor-arg>  -->
+ 		<constructor-arg name="c" ref="ratcliff"></constructor-arg> 
+	</bean>
+		
+	<bean id="ratcliff" class="algoritmi.Ratcliff" scope="singleton">
+	<constructor-arg name="c" ref="huntMcIlroy"></constructor-arg> 
 	</bean>
 	
+	<bean id="huntMcIlroy" class="algoritmi.HuntMcIlroy" scope="singleton">
+<!-- 	<constructor-arg name="next" ref="equals"></constructor-arg>  -->
+	</bean>
 	
 	<!--  <bean id="checkStringDB" class="Algoritmi.CheckStringDB" scope="singleton">
 	</bean>-->
