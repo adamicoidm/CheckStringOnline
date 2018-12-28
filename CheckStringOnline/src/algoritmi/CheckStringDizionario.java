@@ -21,7 +21,7 @@ public abstract class CheckStringDizionario extends CheckString {
 
 			// if (parolaNelDizionario.toLowerCase().contains((CharSequence)
 			// parolaDaConfrontare.toLowerCase())) {
-			if (singleCheck(parolaDaConfrontare, parolaNelDizionario)) {
+			if (singleCheck(parolaDaConfrontare.toUpperCase(), parolaNelDizionario.toUpperCase())) {
 				System.out.println("PAROLA TROVATA: \t" + parolaNelDizionario);
 				return true;
 

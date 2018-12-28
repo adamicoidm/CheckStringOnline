@@ -70,7 +70,7 @@ public abstract class CheckString {
 	//public abstract ArrayList<String> check(String parolaDaConfrontare, ArrayList<Object> params);
 
 	public ArrayList<String> caricaDizionario() throws FileNotFoundException, IOException {
-		Scanner sc = new Scanner(new File("src\\text.txt"));
+		Scanner sc = new Scanner(new File("src\\paesi.txt"));
 //		Scanner sc = new Scanner(new File("src\\text3.txt"));
 
 		ArrayList<String> dizionario = new ArrayList<String>();
@@ -83,7 +83,7 @@ public abstract class CheckString {
 
 		sc.close();
 //		Scanner sc2 = new Scanner(new File("src\\text3.txt"));
-		Scanner sc2 = new Scanner(new File("src\\text.txt"));
+		Scanner sc2 = new Scanner(new File("src\\paesi.txt"));
 
 		ArrayList<String> dizionarioParole = new ArrayList<String>();
 
