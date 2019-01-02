@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import DAO.Candidatura;
+import DAO.CompetenzeDAO;
 import DAO.PostgreCandidaturaDAO;
+import DAO.PostgresCompetenzeDAO;
 
 /**
  * Servlet implementation class Controller
@@ -66,6 +68,23 @@ public class ControllerSpring extends HttpServlet {
 	public ControllerSpring() {
 		super();
 	}
-
+	@GetMapping(value = "/InserisciCompetenza")
+	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList <Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
+		return "InserisciCompetenza";
+	}
+	@GetMapping(value = "/addCompetenza")
+	public String addCompetenza(@ModelAttribute("/addCandidatura") PostgresCompetenzeDAO competenza, ModelMap model)
+			throws ClassNotFoundException {
+		competenza.inserisciCompetenza(competenza.getNomeCompetenza());
+		return "PanelControl";
+	}
+	@GetMapping(value = "/VediCompetenze")
+	public String vediCompetenze(@ModelAttribute("/VediCompetenze")  ArrayList <CompetenzeDAO> candidatura, ModelMap model)
+			throws ClassNotFoundException {
+		PostgresCompetenzeDAO c = new PostgresCompetenzeDAO();
+		List<String> competenze = c.vediCompetenze();
+		model.addAttribute("ListaCandidature", competenze);
+		return "VediCompetenze";
+	}
 
 }

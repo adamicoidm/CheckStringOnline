@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="DAO.Utente"%>
 <!DOCTYPE html>
 
 <html>
@@ -12,10 +13,16 @@
 		<legend>Amministrazione</legend>
 		<br>
 		<div id="LogData">
-Nuova competenza:<br><textarea id="textArea2" name="competenze" rows="5" cols="50" placeholder="Inserire le competenze" autofocus></textarea>
-	</div>
-	<br>
+			<%
+				Utente user = (Utente) request.getAttribute("utente");
+// 				String email = user.getEmail();
+			%>
+		</div>
+		<form action="addCompetenza" method="get">
+		Nuova competenza:<br><input type="text" name="nomeCompetenza" placeholder="Inserire il nome" value="" autofocus required>
+		<br>
 	<input id="buttonSubmit" type="submit" value="Invia Dati">
+	</form>
 	</fieldset>
 	
 </body>

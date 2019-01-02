@@ -3,6 +3,25 @@ package DAO;
 import java.util.ArrayList;
 
 public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements CompetenzeDAO {
+	String nomeCompetenza;
+	String approvata;
+	
+	
+	public String getApprovata() {
+		return approvata;
+	}
+
+	public void setApprovata(String approvata) {
+		this.approvata = approvata;
+	}
+
+	public String getNomeCompetenza() {
+		return nomeCompetenza;
+	}
+
+	public void setNomeCompetenza(String nomeCompetenza) {
+		this.nomeCompetenza = nomeCompetenza;
+	}
 
 	@Override
 	public void inserisciCompetenza(String nomeCompetenza) throws ClassNotFoundException {

@@ -23,6 +23,9 @@
 		<form action="InserisciCompetenza" method="get">
 				Inserisci Competenza: <input id="buttonSubmit" type="submit" value="Invia Dati">
 		</form>
+		<form action="VediCompetenze" method="get">
+				Vedi Competenze: <input id="buttonSubmit" type="submit" value="Invia Dati">
+		</form>
 		<form action="VediCandidature" method="get">
 				Visualizza tutte le candidature: <input id="buttonSubmit" type="submit" value="Invia Dati">
 		</form>
