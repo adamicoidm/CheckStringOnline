@@ -11,6 +11,24 @@ public class Candidatura {
 	String livelloEsperienza;
 	String competenze;
 	String ultimaEsperienza;
+	boolean stato;
+	String note;
+	
+	public boolean isStato() {
+		return stato;
+	}
+
+	public void setStato(boolean stato) {
+		this.stato = stato;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
 
 	public long getId_candidatura() {
 		return id_candidatura;

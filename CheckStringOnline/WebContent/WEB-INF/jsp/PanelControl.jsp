@@ -43,7 +43,7 @@
 		<tr>
 			<td>
 				<form action="VediCandidature" method="get">
-				Visualizza tutte le candidature: </td>
+				Visualizza le candidature accettate: </td>
 				<td><input id="buttonSubmit" type="submit" value="Invia Dati">
 				</form>
 			</td>

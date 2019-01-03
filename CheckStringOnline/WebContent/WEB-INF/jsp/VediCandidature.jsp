@@ -35,7 +35,7 @@
           <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
           <display:column property="competenze" title="Competenze"/>
           <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
-          <display:column ><form action="accettaCandidatura" method="get"><input id="buttonSubmit" type="submit" value="Invia Dati"></form></display:column>
+          <display:column ><form action="accettaCandidatura" method="get"><input id="buttonSubmit" type="submit" value="Accetta Candidatura"></form></display:column>
       </display:table>
 	</fieldset>
 </body>
