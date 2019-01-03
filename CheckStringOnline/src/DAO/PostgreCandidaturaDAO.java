@@ -15,7 +15,7 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 	
 	@Override
 	public ArrayList<Candidatura> vediCandidature() throws ClassNotFoundException {
-		String query = "SELECT * FROM candidatura WHERE stato='true'";
+		String query = "SELECT * FROM public.candidatura WHERE stato='true'";
 		return this.ArrayListQuery(query);
 	}
 
@@ -27,7 +27,7 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 	
 	@Override
 	public ArrayList<Candidatura> vediTutteCandidature() throws ClassNotFoundException {		
-		String query = "SELECT * FROM candidatura ";
+		String query = "SELECT * FROM candidatura";
 		return this.ArrayListQuery(query);
 	}
 
@@ -35,6 +35,14 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 	public boolean inserisciCandidatura(Candidatura c) throws ClassNotFoundException {
 
 		String query = "INSERT into candidatura(nome,cognome,email,data_nascita,num_telefono,titolo_studio,livello_esperienza,ultima_esperienza) VALUES ('"+c.getNome()+"','"+c.getCognome()+"','"+c.getEmail()+"','"+c.getDataNascita()+"','"+c.getNumTelefono()+"','"+c.getTitoloStudio()+"','"+c.getLivelloEsperienza()+"','"+c.getUltimaEsperienza()+"')";
+		return this.booleanQuery(query);
+
+	}
+	
+	public boolean accettaCandidatura(Candidatura c,int id_candidatura) throws ClassNotFoundException {
+
+		String query = "UPDATE public.candidatura SET stato = true WHERE id_candidatura= 2";
+
 		return this.booleanQuery(query);
 
 	}
@@ -61,15 +69,17 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 		for(Object[] tupla : risultato) {
 		
 			Candidatura c = new Candidatura(
-					(String) tupla[0].toString(),
-					(String) tupla[1],
+					
+					(long) tupla[0],
+					(String) tupla[1].toString(),
 					(String) tupla[2],
 					(String) tupla[3],
 					(String) tupla[4].toString(),
 					(String) tupla[5],
 					(String) tupla[6],
 					(String) tupla[7],
-					(String) tupla[8]);
+					(String) tupla[8],
+					(String) tupla[9].toString());
 			listaC.add(c);
 		}
 

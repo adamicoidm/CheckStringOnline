@@ -19,7 +19,7 @@
 </head>
 <body>
 	<fieldset id="fieldsetTable">
-		<legend>Lista nuove candidature</legend>
+		<legend>Lista candidature accettate</legend>
 		<br>
 		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
 		<br><br><br>
@@ -35,8 +35,7 @@
           <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
           <display:column property="competenze" title="Competenze"/>
           <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
-          <display:column ><form action="accettaCandidatura" method="get"><input id="buttonSubmit" type="submit" value="Invia Dati"></form></display:column>
-      </display:table>
+        </display:table>
 	</fieldset>
 </body>
 </html>

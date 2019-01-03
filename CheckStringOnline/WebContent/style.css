@@ -98,6 +98,16 @@ select {
 	font-weight: bold;
 }
 
+#buttonHome{
+	border: solid 1px #ccc;
+	border-radius: 10px;
+	display: block;
+	margin-left: auto;
+  	margin-right: 10px;
+	padding: 5px;
+	width: 150px;
+	
+}
 select.dropdown {
 	border-radius: 30px;
 }
