@@ -11,5 +11,4 @@ public interface CompetenzeDAO {
 	ArrayList<String> vediCompetenze() throws ClassNotFoundException;
 
 	String getCompetenza(String nomeCompetenza) throws ClassNotFoundException;
-
 }

@@ -4,13 +4,14 @@
 <%@ page import="java.util.ArrayList"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 
 <style>
-<%@ include file="/style.css" %>
+	<%@include file="/style.css" %>
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,32 +21,17 @@
 	<fieldset id="fieldsetTable">
 		<legend>Candidatura</legend>
 		<br>
-
-		<table>
-			<tr>
-				<td>Nome</td>
-				<td>Cognome</td>
-				<td>E-mail</td>
-				<td>Data di nascita</td>
-				<td>Numero di telefono</td>
-				<td>Titolo di Studio</td>
-				<td>Livello di esperienza</td>
-				<td>Competenze</td>
-				<td>Ultima esperienza</td>
-			</tr>
-
-			<tr>
-				<td>${ListaCandidature.get(0).getNome()}</td>
-				<td>${ListaCandidature.get(0).getCognome()}</td>
-				<td>${ListaCandidature.get(0).getEmail()}</td>
-				<td>${ListaCandidature.get(0).getDataNascita()}</td>
-				<td>${ListaCandidature.get(0).getNumTelefono()}</td>
-				<td>${ListaCandidature.get(0).getTitoloStudio()}</td>
-				<td>${ListaCandidature.get(0).getLivelloEsperienza()}</td>
-				<td>${ListaCandidature.get(0).getCompetenze()}</td>
-				<td>${ListaCandidature.get(0).getUltimaEsperienza()}</td>
-			</tr>
-		</table>
+		<display:table name="ListaCandidature" pagesize="20">
+          <display:column property="nome" title="Nome" sortable="true"/>
+          <display:column property="cognome" title="Cognome" sortable="true"/>
+          <display:column property="email" title="Email" sortable="true"/>
+          <display:column property="dataNascita" title="Data di nascita" sortable="true"/>
+          <display:column property="numTelefono" title="Telefono" sortable="true"/>
+          <display:column property="titoloStudio" title="Titolo di studio" sortable="true"/>
+          <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
+          <display:column property="competenze" title="Competenze"/>
+          <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
+      </display:table>
 	</fieldset>
 </body>
 </html>

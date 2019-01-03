@@ -79,11 +79,11 @@ public class ControllerSpring extends HttpServlet {
 		return "PanelControl";
 	}
 	@GetMapping(value = "/VediCompetenze")
-	public String vediCompetenze(@ModelAttribute("/VediCompetenze")  ArrayList <CompetenzeDAO> candidatura, ModelMap model)
+	public String vediCompetenze(@ModelAttribute("/VediCompetenze")  ArrayList <String> candidatura, ModelMap model)
 			throws ClassNotFoundException {
 		PostgresCompetenzeDAO c = new PostgresCompetenzeDAO();
 		List<String> competenze = c.vediCompetenze();
-		model.addAttribute("ListaCandidature", competenze);
+		model.addAttribute("ListaCompetenze", competenze);
 		return "VediCompetenze";
 	}
 

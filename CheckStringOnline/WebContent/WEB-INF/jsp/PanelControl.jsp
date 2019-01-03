@@ -20,18 +20,42 @@
 // 				String email = user.getEmail();
 			%>
 		</div>
-		<form action="InserisciCompetenza" method="get">
-				Inserisci Competenza: <input id="buttonSubmit" type="submit" value="Invia Dati">
-		</form>
-		<form action="VediCompetenze" method="get">
-				Vedi Competenze: <input id="buttonSubmit" type="submit" value="Invia Dati">
-		</form>
-		<form action="VediCandidature" method="get">
-				Visualizza tutte le candidature: <input id="buttonSubmit" type="submit" value="Invia Dati">
-		</form>
-		<form action="VediNuoveCandidature" method="get">
-				Visualizza le nuove candidature: <input id="buttonSubmit" type="submit" value="Invia Dati">
-		</form>
+		<br><br><br>
+		<br><br><br>
+		<table>
+		<tr>
+			<td>
+				<form action="InserisciCompetenza" method="get">
+				Inserisci Competenza:</td>
+				<td> <input id="buttonSubmit" type="submit" value="Invia Dati">
+				</form>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<form action="VediCompetenze" method="get">
+				Vedi Competenze:</td>
+				<td> <input id="buttonSubmit" type="submit" value="Invia Dati">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form action="VediCandidature" method="get">
+				Visualizza tutte le candidature: </td>
+				<td><input id="buttonSubmit" type="submit" value="Invia Dati">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form action="VediNuoveCandidature" method="get">
+				Visualizza le nuove candidature:</td><td> <input id="buttonSubmit" type="submit" value="Invia Dati">
+				</form>
+			</td>
+		</tr>
+	</table>
 	</fieldset>
 </body>
 </html>
