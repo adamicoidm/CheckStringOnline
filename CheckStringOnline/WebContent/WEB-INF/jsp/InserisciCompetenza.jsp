@@ -12,6 +12,9 @@
 	<fieldset id="fieldset2">
 		<legend>Amministrazione</legend>
 		<br>
+		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
+		<br><br><br>
+		<br><br><br>
 		<div id="LogData">
 			<%
 				Utente user = (Utente) request.getAttribute("utente");
@@ -20,7 +23,7 @@
 		</div>
 		<form action="addCompetenza" method="get">
 		Nuova competenza:<br><input type="text" name="nomeCompetenza" placeholder="Inserire il nome" value="" autofocus required>
-		<br>
+		<br><br>
 	<input id="buttonSubmit" type="submit" value="Invia Dati">
 	</form>
 	</fieldset>

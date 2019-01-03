@@ -19,8 +19,11 @@
 </head>
 <body>
 	<fieldset id="fieldsetTable">
-		<legend>Candidatura</legend>
+		<legend>Lista Candidature</legend>
 		<br>
+		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
+		<br><br><br>
+		<br><br><br>
 		<display:table name="ListaCandidature" pagesize="20">
           <display:column property="nome" title="Nome" sortable="true"/>
           <display:column property="cognome" title="Cognome" sortable="true"/>
@@ -31,6 +34,7 @@
           <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
           <display:column property="competenze" title="Competenze"/>
           <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
+          <display:column ><form action="accettaCandidatura" method="get"><input id="buttonSubmit" type="submit" value="Invia Dati"></form></display:column>
       </display:table>
 	</fieldset>
 </body>

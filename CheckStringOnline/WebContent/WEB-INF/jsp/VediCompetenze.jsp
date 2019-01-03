@@ -21,9 +21,11 @@
 	<fieldset id="fieldsetTable">
 		<legend>Competenze</legend>
 		<br>
-
+		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
+		<br><br><br>
+		<br><br><br>
 		<display:table name="ListaCompetenze" pagesize="20">
-          <display:column property="nome_competenza" title="NomeCompetenza" sortable="true"/>
+          <display:column property="nomeCompetenza" title="Nome Competenza" sortable="true"/>
       </display:table>
 	</fieldset>
 </body>
