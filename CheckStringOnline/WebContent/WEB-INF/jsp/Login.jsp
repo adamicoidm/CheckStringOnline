@@ -12,14 +12,13 @@
 	<fieldset id="fieldset">
 		<legend>Login</legend>
 		<br>
-		<form id="formLogin" method="post" action="./Login">
-			Email:<br> <input type="text" name="email"
-				placeholder="Inserire email" autofocus><br>
-			<br> Password:<br> <input type="password" name="password"
-				placeholder="Inserire la password"><br>
-			<br> <input id="buttonSubmit" type="submit" value="Login"> 
-			<input id="buttonRegister" type="button" value="Registrati"
-				onclick="location.href='Registrazione.jsp'">
+		<form action="Login" method="get" >
+			User:<br> 
+			<input type="text" name="user" placeholder="Inserire user" autofocus ><br>
+			Password:<br> 
+			<input type="password" name="password" placeholder="Inserire la password"><br>
+			<br>
+			<input id="buttonSubmit" type="submit" value="Login">
 		</form>
 	</fieldset>
 </body>
