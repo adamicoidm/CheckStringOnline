@@ -19,6 +19,45 @@ import DAO.*;
 @Controller
 public class ControllerSpring extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	//CONTROLLER SPRING
+	
+	
+	public ControllerSpring() {
+		super();
+	}
+
+	
+	//HOME
+	
+	
+	@GetMapping(value = "/")
+	public String home() {
+
+		return "Candidatura";
+	}
+	
+	
+	//CANDIDATURE
+	
+	
+	@GetMapping(value = "/VediCandidature")
+	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList <Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.vediCandidature();
+		model.addAttribute("ListaCandidature", candidature);
+		return "VediCandidatureAccettate";
+	}
+	
+	@GetMapping(value = "/VediNuoveCandidature")
+	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		List<Candidatura> candidature = c.vediNuoveCandidature();
+		model.addAttribute("ListaCandidature", candidature);
+		return "VediCandidature";
+	}
 
 	@GetMapping(value = "/addCandidatura")
 	public String addCandidatura(@ModelAttribute("/addCandidatura") Candidatura candidatura, ModelMap model)
@@ -36,40 +75,18 @@ public class ControllerSpring extends HttpServlet {
 		return "candidaturaCompletata";
 	}
 
-	@GetMapping(value = "/VediCandidature")
-	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList <Candidatura> candidatura,
-			ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
-		ArrayList<Candidatura> candidature = c.vediCandidature();
-		model.addAttribute("ListaCandidature", candidature);
-		return "VediCandidatureAccettate";
+	@GetMapping(value = "/accettaCandidatura")
+	public String accettaCandidatura(@ModelAttribute("/acceptCandidatura") Candidatura candidatura, ModelMap model)
+			throws ClassNotFoundException {
+		PostgreCandidaturaDAO aC = new PostgreCandidaturaDAO();
+		aC.accettaCandidatura(candidatura, 3);
+		return "VediNuoveCandidature";
 	}
 
-	@GetMapping(value = "/VediNuoveCandidature")
-	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,
-			ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
-		List<Candidatura> candidature = c.vediNuoveCandidature();
-		model.addAttribute("ListaCandidature", candidature);
-		return "VediCandidature";
-	}
-
-	@GetMapping(value = "/PanelControl")
-	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
-			throws ClassNotFoundException, SQLException {
-		return "PanelControl";
-	}
-
-	@GetMapping(value = "/")
-	public String home() {
-
-		return "Candidatura";
-	}
-
-	public ControllerSpring() {
-		super();
-	}
-
+	
+	//COMPETENZE
+	
+	
 	@GetMapping(value = "/InserisciCompetenza")
 	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList <Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
@@ -99,14 +116,10 @@ public class ControllerSpring extends HttpServlet {
 		return "VediCompetenze";
 	}
 
-	@GetMapping(value = "/accettaCandidatura")
-	public String accettaCandidatura(@ModelAttribute("/acceptCandidatura") Candidatura candidatura, ModelMap model)
-			throws ClassNotFoundException {
-		PostgreCandidaturaDAO aC = new PostgreCandidaturaDAO();
-		aC.accettaCandidatura(candidatura, 3);
-		return "VediNuoveCandidature";
-	}
-
+	
+	//LOGIN
+	
+	
 	@GetMapping(value = "/LoginButtonCand")
 	public String Login(@ModelAttribute("/LoginButtonCand") ModelMap model) throws ClassNotFoundException, SQLException {
 		return "Login";
@@ -122,5 +135,14 @@ public class ControllerSpring extends HttpServlet {
 			return "Login";
 		}
 
+	}
+	
+	
+	//PANNELLO DI CONTROLLO
+
+	@GetMapping(value = "/PanelControl")
+	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		return "PanelControl";
 	}
 }
