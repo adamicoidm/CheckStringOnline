@@ -25,33 +25,22 @@
 		<table>
 		<tr>
 			<td>
-				<form action="InserisciCompetenza" method="get">
-				Inserisci Competenza:</td>
-				<td> <input id="buttonSubmit" type="submit" value="Invia Dati">
-				</form>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
 				<form action="VediCompetenze" method="get">
-				Vedi Competenze:</td>
-				<td> <input id="buttonSubmit" type="submit" value="Invia Dati">
+				<input id="buttonSubmit" type="submit" value="Competenze">
 				</form>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<form action="VediCandidature" method="get">
-				Visualizza le candidature accettate: </td>
-				<td><input id="buttonSubmit" type="submit" value="Invia Dati">
+				<input id="buttonSubmit" type="submit" value="Candidature">
 				</form>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<form action="VediNuoveCandidature" method="get">
-				Visualizza le nuove candidature:</td><td> <input id="buttonSubmit" type="submit" value="Invia Dati">
+				<input id="buttonSubmit" type="submit" value="Nuove candidature">
 				</form>
 			</td>
 		</tr>

@@ -29,12 +29,31 @@
 		<display:table name="ListaCompetenze" pagesize="20">
 			<display:column property="nomeCompetenza" title="Nome Competenza" sortable="true" />
 		</display:table>
-
-		<form action="removeCompetenza" method="get">
-				Nuova competenza:<br> <input type="text" name="nomeCompetenza"
-				placeholder="Inserire la competenza da eliminare" autofocus required> <br> <br> 
-				<input id="buttonSubmit" type="submit" value="Invia Dati">
-		</form>
+		
+		<br><br><br>
+		<table>
+			<tr>
+				<td>INSERISCI COMPETENZA</td>
+				<td>ELIMINA COMPETENZA</td>
+			</tr>
+			<tr>
+				<td>
+					<form action="addCompetenza" method="get">
+						<input type="text" name="nomeCompetenza" placeholder="Inserire competenza" value="" autofocus required>
+						<br><br>
+						<input id="buttonSubmit" type="submit" value="Inserisci">
+					</form>
+					
+				</td>
+				<td>
+					<form action="removeCompetenza" method="get">
+						<input type="text" name="nomeCompetenza"
+						placeholder="Inserire competenza" autofocus required> <br> <br> 
+						<input id="buttonSubmit" type="submit" value="Elimina">
+					</form>
+				</td>
+			</tr>
+		</table>
 	</fieldset>
 </body>
 </html>

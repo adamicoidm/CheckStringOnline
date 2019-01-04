@@ -94,17 +94,18 @@ public class ControllerSpring extends HttpServlet {
 	}
 
 	@GetMapping(value = "/addCompetenza")
-	public String addCompetenza(@ModelAttribute("/addCandidatura") PostgresCompetenzeDAO competenza, ModelMap model)
+	public String addCompetenza(@ModelAttribute("/addCandidatura")ArrayList<String> competenze,PostgresCompetenzeDAO competenza, ModelMap model)
 			throws ClassNotFoundException {
 		competenza.inserisciCompetenza(competenza.getNomeCompetenza());
-		return "PanelControl";
+		return vediCompetenze(competenze,model);
 	}
 
 	@GetMapping(value = "/removeCompetenza")
-	public String removeCompetenza(@ModelAttribute("/removeCompetenza") PostgresCompetenzeDAO competenza, ModelMap model)
+	public String removeCompetenza(@ModelAttribute("/removeCompetenza") ArrayList<String> competenze, PostgresCompetenzeDAO competenza, ModelMap model)
 			throws ClassNotFoundException {
 		competenza.rimuoviCompetenza(competenza.getNomeCompetenza());
-		return "VediCompetenze";
+		
+		return vediCompetenze(competenze, model);
 	}
 
 	@GetMapping(value = "/VediCompetenze")
@@ -137,12 +138,12 @@ public class ControllerSpring extends HttpServlet {
 
 	}
 	
-	
 	//PANNELLO DI CONTROLLO
-
+	
+	
 	@GetMapping(value = "/PanelControl")
-	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
-			throws ClassNotFoundException, SQLException {
-		return "PanelControl";
+	  public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
+	      throws ClassNotFoundException, SQLException {
+	    return "PanelControl";
+	  }
 	}
-}
