@@ -24,6 +24,20 @@
 		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
 		<br><br><br>
 		<br><br><br>
+			<table id="MyP"></table>
+		<script>
+			var text = "";
+			var i;
+			var y;
+			for (i = 0; i <"${ListaCandidature.size()}"; i++) { 
+				text+="<tr>";
+  					text +='<td> ${ListaCandidature.get().getId_candidatura()} </td>';
+  					text +='<td> ${ListaCandidature.get().getNome()} </td>';
+  				text+="</tr>";
+			}
+			document.getElementById("MyP").innerHTML = text;
+		</script>
+	
 		<display:table name="ListaCandidature" pagesize="20">
 		  <display:column property="id_candidatura" title="Id" sortable="true"/>
           <display:column property="nome" title="Nome" sortable="true"/>
@@ -35,7 +49,7 @@
           <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
           <display:column property="competenze" title="Competenze"/>
           <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
-          <display:column ><form action="accettaCandidatura" method="get"><input id="buttonSubmit" type="submit" value="Accetta Candidatura"></form></display:column>
+          <display:column ><form action="accettaCandidatura" method="get"> <input type="submit" name="idCandidatura" value="${ListaCandidature.get(0).id_candidatura}"/>Accetta Candidatura</form></display:column>
       </display:table>
 	</fieldset>
 </body>

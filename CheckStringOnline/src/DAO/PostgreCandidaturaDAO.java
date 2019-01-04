@@ -39,9 +39,9 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 
 	}
 	
-	public boolean accettaCandidatura(Candidatura c,int id_candidatura) throws ClassNotFoundException {
+	public boolean accettaCandidatura(Candidatura c,long id_candidatura) throws ClassNotFoundException {
 
-		String query = "UPDATE public.candidatura SET stato = true WHERE id_candidatura= 2";
+		String query = "UPDATE public.candidatura SET stato = true WHERE id_candidatura="+id_candidatura;
 
 		return this.booleanQuery(query);
 
