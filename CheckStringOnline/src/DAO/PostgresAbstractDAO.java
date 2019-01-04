@@ -25,9 +25,9 @@ public abstract class PostgresAbstractDAO {
 
 	public PostgresAbstractDAO() {
 		
-		url = "jdbc:postgresql://localhost:5433/postgres";
+		url = "jdbc:postgresql://localhost:5432/postgres";
 		user = "postgres";
-		password = "admin";
+		password = "8110";
 		driver = "org.postgresql.Driver";
 	}
 	

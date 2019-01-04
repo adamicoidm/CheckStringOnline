@@ -39,23 +39,29 @@ public class ControllerSpring extends HttpServlet {
 	}
 
 	@GetMapping(value = "/VediCandidature")
-	public String vediCandidature(@ModelAttribute("/VediCandidature")  ArrayList <Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList<Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
-		ArrayList<Candidatura> candidature = c.vediCandidature(); 
+		ArrayList<Candidatura> candidature = c.vediCandidature();
 		model.addAttribute("ListaCandidature", candidature);
 		return "VediCandidatureAccettate";
 	}
+
 	@GetMapping(value = "/VediNuoveCandidature")
-	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
+	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		List<Candidatura> candidature = c.vediNuoveCandidature();
 		model.addAttribute("ListaCandidature", candidature);
 		return "VediCandidature";
 	}
+
 	@GetMapping(value = "/PanelControl")
-	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model) throws ClassNotFoundException, SQLException {
-	return "PanelControl";
+	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		return "PanelControl";
 	}
+
 	@GetMapping(value = "/")
 	public String home() {
 
@@ -65,30 +71,59 @@ public class ControllerSpring extends HttpServlet {
 	public ControllerSpring() {
 		super();
 	}
+
 	@GetMapping(value = "/InserisciCompetenza")
-	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList <Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
+	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList<Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
 		return "InserisciCompetenza";
 	}
+
 	@GetMapping(value = "/addCompetenza")
 	public String addCompetenza(@ModelAttribute("/addCandidatura") PostgresCompetenzeDAO competenza, ModelMap model)
 			throws ClassNotFoundException {
 		competenza.inserisciCompetenza(competenza.getNomeCompetenza());
 		return "PanelControl";
 	}
+
 	@GetMapping(value = "/VediCompetenze")
-	public String vediCompetenze(@ModelAttribute("/VediCompetenze")  ArrayList <String> candidatura, ModelMap model)
+	public String vediCompetenze(@ModelAttribute("/VediCompetenze") ArrayList<String> candidatura, ModelMap model)
 			throws ClassNotFoundException {
 		PostgresCompetenzeDAO c = new PostgresCompetenzeDAO();
 		List<PostgresCompetenzeDAO> competenze = c.vediCompetenze();
 		model.addAttribute("ListaCompetenze", competenze);
 		return "VediCompetenze";
 	}
+
 	@GetMapping(value = "/accettaCandidatura")
 	public String accettaCandidatura(@ModelAttribute("/acceptCandidatura") Candidatura candidatura, ModelMap model)
 			throws ClassNotFoundException {
-		PostgreCandidaturaDAO aC= new PostgreCandidaturaDAO();
-		aC.accettaCandidatura(candidatura,3);
+		PostgreCandidaturaDAO aC = new PostgreCandidaturaDAO();
+		aC.accettaCandidatura(candidatura, 3);
 		return "VediNuoveCandidature";
 	}
 
+	@GetMapping(value = "/LoginButtonCand")
+	public String Login(@ModelAttribute("/LoginButtonCand") ModelMap model) throws ClassNotFoundException, SQLException {
+		return "Login";
+	}
+
+	@GetMapping(value = "/Login")
+	public String LoginButton2(@ModelAttribute("/Login") String user, @ModelAttribute("/Login") String password , ModelMap model) throws ClassNotFoundException, SQLException {
+		
+		System.out.println("sono prima di if " + user + " " + password);
+		
+		if (/*(user == "chiara") && */(password == "titti")) {
+			
+			System.out.println("ciao");
+			
+			return "PanelControl";
+			
+		} else {
+			
+			System.out.println("ciao2");
+
+			return "Login";
+		}
+
+	}
 }
