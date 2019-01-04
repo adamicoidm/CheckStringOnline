@@ -63,10 +63,8 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 		if (risultato.size() != 0) {
 			Object[] res = risultato.get(0);
 			String s = (String) res[0];
-
 			return s;
 		}
-
 		return null;
 	}
 
@@ -82,9 +80,9 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 			tmp.setNomeCompetenza(s.toString());
 			listaS.add(tmp);
 		}
-
 		return listaS;
-
 	}
-
+	
 }
+
+
