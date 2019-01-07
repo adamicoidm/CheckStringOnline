@@ -59,11 +59,11 @@
 <%-- 		<td> <% String ultimaEsperienza = candidatura.getUltimaEsperienza(); out.print(ultimaEsperienza); %></td> --%>
 	</tr>
 </table>
-<td>
+
 <form action="/CheckStringOnline/">
 	<input type="submit" value="back">
 </form>
-</td>
+
 </fieldset>
 </body>
 </html>

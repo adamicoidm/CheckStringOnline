@@ -16,54 +16,54 @@
 <table>
 	<tr>
 		<td>Nome</td>
-		<td>${nome}</td>
+		<td>${ListaCandidature.get(0).getNome()}</td>
 <%-- 		<td> <% String nome = candidatura.getNome(); out.print(nome); %></td> --%>
 	</tr>
 	<tr>
 		<td>Cognome</td>
-		<td>${cognome}</td>
+		<td>${ListaCandidature.get(0).getCognome()}</td>
 <%-- 		<td> <% String cognome = candidatura.getCognome(); out.print(cognome); %></td> --%>
 	</tr>
 	<tr>
 		<td>E-mail</td>
-		<td>${email}</td>
+		<td>${ListaCandidature.get(0).getEmail()}</td>
 <%-- 		<td> <% String email = candidatura.getEmail(); out.print(email); %></td> --%>
 	</tr>
 	<tr>
 		<td>Data di nascita</td>
-		<td>${dataNascita}</td>
+		<td>${ListaCandidature.get(0).getDataNascita()}</td>
 <%-- 	<td> <% String dataNascita = candidatura.getDataNascita(); out.print(dataNascita); %></td></tr> --%>
 	<tr>
 		<td>Numero di telefono</td>	
-		<td>${numTelefono}</td>
+		<td>${ListaCandidature.get(0).getNumTelefono()}</td>
 <%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 		<tr>
 		<td>Titolo di Studio</td>	
-		<td>${titoloStudio}</td>
+		<td>${ListaCandidature.get(0).getTitoloStudio()}</td>
 <%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 	<tr>
 		<td>Livello di esperienza</td>
-		<td>${livelloEsperienza}</td>
+		<td>${ListaCandidature.get(0).getLivelloEsperienza()}</td>
 <%-- 		<td> <% String livelloEsperienza =candidatura.getLivelloEsperienza(); out.print(livelloEsperienza); %></td> --%>
 	</tr>
 	<tr>
 		<td>Competenze</td>
-		<td>${competenze}</td>
+		<td>${ListaCandidature.get(0).getCompetenze()}</td>
 <%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
 	</tr>
 	<tr>
 		<td>Ultima esperienza</td>
-		<td>${ultimaEsperienza}</td>
+		<td>${ListaCandidature.get(0).getUltimaEsperienza()}</td>
 <%-- 		<td> <% String ultimaEsperienza = candidatura.getUltimaEsperienza(); out.print(ultimaEsperienza); %></td> --%>
 	</tr>
 </table>
-<td>
-<form action="/CheckStringOnline/">
+
+<form action="VediNuoveCandidature">
 	<input type="submit" value="back">
 </form>
-</td>
+
 </fieldset>
 </body>
 </html>

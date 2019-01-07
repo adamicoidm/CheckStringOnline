@@ -40,14 +40,16 @@
 		String table="";
 		out.println(lista_candidature.size());
 		for(int i=0;i<lista_candidature.size();i++){
-			table+="<tr>";
+			table+="<form action='ResocontoCandidatura' method='get'>";
+			table+="<tr name='id_candidatura' value='"+lista_candidature.get(i).getId_candidatura()+"'>";
+			table+="<input type='hidden'name='id_candidatura' value='"+lista_candidature.get(i).getId_candidatura()+"'>";
 				table+="<td>"+lista_candidature.get(i).getNome()+"</td>";
 				table+="<td>"+lista_candidature.get(i).getCognome()+"</td>";
 				table+="<td>"+lista_candidature.get(i).getTitoloStudio()+"</td>";
 				table+="<td>"+lista_candidature.get(i).getLivelloEsperienza()+"</td>";
 				table+="<td>"+lista_candidature.get(i).isStato()+"</td>";
-				table+="<td><input type='submit' name='"+lista_candidature.get(i).getId_candidatura()+"'value='Vedi Candidatura "+lista_candidature.get(i).getId_candidatura()+"'></td>";
-			table+="</tr>";
+				table+="<td><input type='submit' value='Vedi Candidatura'></td>";
+					table+="</tr></form>";
 		}
 		out.println(table);
 		%>

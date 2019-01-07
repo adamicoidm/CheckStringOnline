@@ -49,7 +49,14 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("ListaCandidature", candidature);
 		return "VediCandidatureAccettate";
 	}
-	
+	@GetMapping(value = "/ResocontoCandidatura")
+	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,ArrayList <Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		candidatura = c.resocontoCandidatura((int) c1.getId_candidatura());
+		model.addAttribute("ListaCandidature", candidatura);
+		return "ResocontoCandidatura";
+	}
 	@GetMapping(value = "/VediNuoveCandidature")
 	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
@@ -58,7 +65,7 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
-
+	
 	@GetMapping(value = "/addCandidatura")
 	public String addCandidatura(@ModelAttribute("/addCandidatura") Candidatura candidatura, ModelMap model)
 			throws ClassNotFoundException {
