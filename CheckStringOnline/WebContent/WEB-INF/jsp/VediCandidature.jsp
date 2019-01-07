@@ -35,7 +35,7 @@
 				</tr>
 	
 		<% 
-		Object obj= request.getAttribute("ListaCandidature");
+		Object obj= request.getAttribute("Lista_candidature");
 		List<Candidatura> lista_candidature = (List<Candidatura>) obj;
 		String table="";
 		out.println(lista_candidature.size());
@@ -48,23 +48,10 @@
 				table+="<td>"+lista_candidature.get(i).isStato()+"</td>";
 				table+="<td><input type='submit' name='"+lista_candidature.get(i).getId_candidatura()+"'value='Vedi Candidatura "+lista_candidature.get(i).getId_candidatura()+"'></td>";
 			table+="</tr>";
-			out.println(table);
 		}
+		out.println(table);
 		%>
 		</table>
-		<display:table name="ListaCandidature" pagesize="20">
-		  <display:column property="id_candidatura" title="Id" sortable="true"/>
-          <display:column property="nome" title="Nome" sortable="true"/>
-          <display:column property="cognome" title="Cognome" sortable="true"/>
-          <display:column property="email" title="Email" sortable="true"/>
-          <display:column property="dataNascita" title="Data di nascita" sortable="true"/>
-          <display:column property="numTelefono" title="Telefono" sortable="true"/>
-          <display:column property="titoloStudio" title="Titolo di studio" sortable="true"/>
-          <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
-          <display:column property="competenze" title="Competenze"/>
-          <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
-          <display:column ><form action="accettaCandidatura" method="get"> <input type="submit" name="idCandidatura" value="${ListaCandidature.get(0).id_candidatura}"/>Accetta Candidatura</form></display:column>
-      </display:table>
 	</fieldset>
 </body>
 </html>

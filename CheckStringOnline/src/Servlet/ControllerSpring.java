@@ -54,8 +54,8 @@ public class ControllerSpring extends HttpServlet {
 	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
-		List<Candidatura> candidature = c.vediNuoveCandidature();
-		model.addAttribute("ListaCandidature", candidature);
+		ArrayList<Candidatura> candidature = c.vediNuoveCandidature();
+		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
 
