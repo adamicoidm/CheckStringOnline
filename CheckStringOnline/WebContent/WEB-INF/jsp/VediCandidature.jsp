@@ -35,8 +35,8 @@
 				</tr>
 	
 		<% 
-		--ATTENZIONE: request potrebbe avere qualche dato in background oltre ai 3 richiesti qui... CONTROLLARE--
-		List<Candidatura> lista_candidature = (List<Candidatura>) request.getAttribute("ListaCandidature");
+		Object obj= request.getAttribute("ListaCandidature");
+		List<Candidatura> lista_candidature = (List<Candidatura>) obj;
 		String table="";
 		out.println(lista_candidature.size());
 		for(int i=0;i<lista_candidature.size();i++){
