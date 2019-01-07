@@ -24,20 +24,34 @@
 		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
 		<br><br><br>
 		<br><br><br>
-			<table id="MyP"></table>
-		<script>
-			var text = "";
-			var i;
-			var y;
-			for (i = 0; i <"${ListaCandidature.size()}"; i++) { 
-				text+="<tr>";
-  					text +='<td> ${ListaCandidature.get().getId_candidatura()} </td>';
-  					text +='<td> ${ListaCandidature.get().getNome()} </td>';
-  				text+="</tr>";
-			}
-			document.getElementById("MyP").innerHTML = text;
-		</script>
+			<table id="MyP">
+				<tr>
+					<td>NOME</td>
+					<td>COGNOME</td>
+					<td>TITOLO STUDIO</td>
+					<td>LIVELLO ESPERIENZA</td>
+					<td>STATO</td>
+					<td>VEDI CANDIDATURA</td>
+				</tr>
 	
+		<% 
+		--ATTENZIONE: request potrebbe avere qualche dato in background oltre ai 3 richiesti qui... CONTROLLARE--
+		List<Candidatura> lista_candidature = (List<Candidatura>) request.getAttribute("ListaCandidature");
+		String table="";
+		out.println(lista_candidature.size());
+		for(int i=0;i<lista_candidature.size();i++){
+			table+="<tr>";
+				table+="<td>"+lista_candidature.get(i).getNome()+"</td>";
+				table+="<td>"+lista_candidature.get(i).getCognome()+"</td>";
+				table+="<td>"+lista_candidature.get(i).getTitoloStudio()+"</td>";
+				table+="<td>"+lista_candidature.get(i).getLivelloEsperienza()+"</td>";
+				table+="<td>"+lista_candidature.get(i).isStato()+"</td>";
+				table+="<td><input type='submit' name='"+lista_candidature.get(i).getId_candidatura()+"'value='Vedi Candidatura "+lista_candidature.get(i).getId_candidatura()+"'></td>";
+			table+="</tr>";
+			out.println(table);
+		}
+		%>
+		</table>
 		<display:table name="ListaCandidature" pagesize="20">
 		  <display:column property="id_candidatura" title="Id" sortable="true"/>
           <display:column property="nome" title="Nome" sortable="true"/>
