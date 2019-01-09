@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="DAO.Candidatura"%>
+<%@ page import="DAO.Utente"%>
 <%@ page import="java.util.ArrayList"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -18,27 +19,33 @@
 <title>Lista candidature</title>
 </head>
 <body>
+
 	<fieldset id="fieldsetTable">
 		<legend>Lista nuove candidature</legend>
 		<br>
-		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
+		<form action="Logout" id="alignRightOBJ">
+		<p>Sei connesso come ${ute.user}</p>
+		<input type='submit' id='buttonFunction'value='Logout'>
+		<br><br>
+		<a href="PanelControl"><input type="button" id="buttonFunction" value="Home"></a>
+		</form>
 		<br><br><br>
 		<br><br><br>
-			<table id="MyP">
+			<table>
 				<tr>
-					<td>NOME</td>
-					<td>COGNOME</td>
-					<td>TITOLO STUDIO</td>
-					<td>LIVELLO ESPERIENZA</td>
-					<td>STATO</td>
-					<td>VEDI CANDIDATURA</td>
+					<th>NOME</th>
+					<th>COGNOME</th>
+					<th>TITOLO STUDIO</th>
+					<th>LIVELLO ESPERIENZA</th>
+					<th>STATO</th>
+					<th>VEDI CANDIDATURA</th>
 				</tr>
 	
 		<% 
 		Object obj= request.getAttribute("Lista_candidature");
-		List<Candidatura> lista_candidature = (List<Candidatura>) obj;
+		List<Candidatura> lista_candidature =new ArrayList<Candidatura>();
+				lista_candidature=(List<Candidatura>) obj;
 		String table="";
-		out.println(lista_candidature.size());
 		for(int i=0;i<lista_candidature.size();i++){
 			table+="<form action='ResocontoCandidatura' method='get'>";
 			table+="<tr name='id_candidatura' value='"+lista_candidature.get(i).getId_candidatura()+"'>";

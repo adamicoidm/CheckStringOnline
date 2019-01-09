@@ -20,8 +20,12 @@
 <body>
 	<fieldset id="fieldsetTable">
 		<legend>Lista candidature accettate</legend>
-		<br>
-		<a href="PanelControl"><input type="button" id="buttonHome" value="Torna alla Home"></a>
+		<form action="Logout" id="alignRightOBJ">
+		<p>Sei connesso come ${ute.user}</p>
+		<input type='submit' id='buttonFunction'value='Logout'>
+		<br><br>
+		<a href="PanelControl"><input type="button" id="buttonFunction" value="Home"></a>
+		</form>
 		<br><br><br>
 		<br><br><br>
 		<display:table name="ListaCandidature" pagesize="20">
@@ -33,8 +37,8 @@
           <display:column property="numTelefono" title="Telefono" sortable="true"/>
           <display:column property="titoloStudio" title="Titolo di studio" sortable="true"/>
           <display:column property="livelloEsperienza" title="Esperienza" sortable="true"/>
-          <display:column property="competenze" title="Competenze"/>
           <display:column property="ultimaEsperienza" title="Ultima esperienza"/>
+          <display:column property="stato" title="Stato"/>
         </display:table>
 	</fieldset>
 </body>

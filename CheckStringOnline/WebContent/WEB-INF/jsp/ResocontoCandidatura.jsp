@@ -12,8 +12,20 @@
 <%-- <% Candidatura candidatura= (Candidatura)request.getAttribute("candidatura"); %> --%>
 <fieldset id="fieldsetTable">
     <legend>Candidatura</legend>
-	<br>
+	<form action="Logout" id="alignRightOBJ">
+		<p>Sei connesso come ${ute.user}</p>
+		<input type='submit' id='buttonFunction'value='Logout'>
+		<br><br>
+		<a href="PanelControl"><input type="button" id="buttonFunction" value="Home"></a>
+		</form>
+		<br><br>
+		<br><br><br>
+		<br><br><br>
 <table>
+	<tr>
+		<th>CAMPO</th>
+		<th>DATI</th>
+	</tr>
 	<tr>
 		<td>Nome</td>
 		<td>${ListaCandidature.get(0).getNome()}</td>
@@ -49,8 +61,8 @@
 <%-- 		<td> <% String livelloEsperienza =candidatura.getLivelloEsperienza(); out.print(livelloEsperienza); %></td> --%>
 	</tr>
 	<tr>
-		<td>Competenze</td>
-		<td>${ListaCandidature.get(0).getCompetenze()}</td>
+		<td>Stato</td>
+		<td>${ListaCandidature.get(0).isStato()}</td>
 <%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
 	</tr>
 	<tr>
@@ -59,7 +71,6 @@
 <%-- 		<td> <% String ultimaEsperienza = candidatura.getUltimaEsperienza(); out.print(ultimaEsperienza); %></td> --%>
 	</tr>
 </table>
-
 <form action="VediNuoveCandidature">
 	<input type="submit" value="back">
 </form>

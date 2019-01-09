@@ -6,8 +6,8 @@ public class Candidatura {
 	String cognome;
 	String email;
 	String dataNascita;
-	String titoloStudio;
 	String numTelefono;
+	String titoloStudio;
 	String livelloEsperienza;
 	String competenze;
 	String ultimaEsperienza;
@@ -70,10 +70,27 @@ public class Candidatura {
 //		this.ultimaEsperienza = ultimaEsperienza;
 //	}
 	
-	public Candidatura(long id,String nome, String cognome, String email, String dataNascita, String numTelefono,
-			String titoloStudio, String livelloEsperienza, String competenze, String ultimaEsperienza) {
+
+//	public Candidatura(long id,String nome, String cognome, String email, String dataNascita, String numTelefono,
+//			String titoloStudio, String livelloEsperienza, String competenze, String ultimaEsperienza) {
+//		super();
+//		this.id_candidatura=id;
+//		this.nome = nome;
+//		this.cognome = cognome;
+//		this.email = email;
+//		this.dataNascita = dataNascita;
+//		this.numTelefono = numTelefono;
+//		this.titoloStudio = titoloStudio;
+//		this.livelloEsperienza = livelloEsperienza;
+//		this.competenze = competenze;
+//		this.ultimaEsperienza = ultimaEsperienza;
+//	}
+	
+	public Candidatura(long id_candidatura, String nome, String cognome, String email, String dataNascita,
+			 String numTelefono,String titoloStudio, String livelloEsperienza,
+			String ultimaEsperienza, boolean stato, String note) {
 		super();
-		this.id_candidatura=id;
+		this.id_candidatura = id_candidatura;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -81,15 +98,9 @@ public class Candidatura {
 		this.numTelefono = numTelefono;
 		this.titoloStudio = titoloStudio;
 		this.livelloEsperienza = livelloEsperienza;
-		this.competenze = competenze;
 		this.ultimaEsperienza = ultimaEsperienza;
-	}
-	@Override
-	public String toString() {
-		return "Candidatura [nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", dataNascita="
-				+ dataNascita + ", titoloStudio=" + titoloStudio + ", numTelefono=" + numTelefono
-				+ ", livelloEsperienza=" + livelloEsperienza + ", competenze=" + competenze + ", ultimaEsperienza="
-				+ ultimaEsperienza + "]";
+		this.stato = stato;
+		this.note = note;
 	}
 
 	public String getNome() {

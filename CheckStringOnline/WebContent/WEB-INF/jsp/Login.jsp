@@ -12,8 +12,12 @@
 
 	<fieldset id="fieldset">
 		<legend>Login</legend>
-		<br>
-		<form action="Login" method="get" >
+		<br><br><br>
+		<br><br><br>
+		<br><br><br>
+		<br><br><br>
+		<br><br><br>
+		<form action="Login" method="get" id="Login" >
 			User:<br> 
 			<input type="text" name="user" placeholder="Inserire user" autofocus ><br>
 			Password:<br> 

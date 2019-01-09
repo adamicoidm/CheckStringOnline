@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="DAO.Utente"%>
-
+  <%@page import="DAO.Utente"%>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +15,11 @@
 		<legend>Pannello di controllo</legend>
 		<br>
 		<div id="LogData">
-			<%
-				Utente user = (Utente) request.getAttribute("utente");
-// 				String email = user.getEmail();
-			%>
+		<form action="Logout" id="alignRightOBJ">
+		<p>Sei connesso come ${ute.user}</p>
+		<br><input type='submit' id='buttonFunction'value='Logout'>
+		</form>
+	
 		</div>
 		<br><br><br>
 		<br><br><br>

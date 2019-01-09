@@ -15,7 +15,7 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 	
 	@Override
 	public ArrayList<Candidatura> vediCandidature() throws ClassNotFoundException {
-		String query = "SELECT * FROM public.candidatura WHERE stato='true'";
+		String query = "SELECT * FROM public.candidatura WHERE stato=true";
 		return this.ArrayListQuery(query);
 	}
 	
@@ -84,7 +84,8 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 					(String) tupla[6],
 					(String) tupla[7],
 					(String) tupla[8],
-					(String) tupla[9].toString());
+					(Boolean) tupla[9],
+					(String) tupla[10]);
 			listaC.add(c);
 		}
 

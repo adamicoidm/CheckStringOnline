@@ -51,7 +51,7 @@ tr:nth-child(even) {
 }
 
 th {
-	background-color: #4CAF50;
+	background-color: #AAAAFF;
 	color: white;
 }
 
@@ -64,7 +64,12 @@ th {
 	padding: 10px;
 	border-image-slice: 5;
 }
-
+#Login{ 
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
 #textArea2 {
 	resize: none;
 	min-height: 200px;
@@ -98,7 +103,7 @@ select {
 	font-weight: bold;
 }
 
-#buttonHome{
+#alignRightOBJ{
 	border: solid 1px #ccc;
 	border-radius: 10px;
 	display: block;
@@ -106,7 +111,14 @@ select {
   	margin-right: 10px;
 	padding: 5px;
 	width: 150px;
-	
+	text-align: center;
+}
+#buttonFunction{
+	border: solid 1px #ccc;
+	border-radius: 10px;
+	padding: 5px;
+	width: 125px;
+}
 }
 select.dropdown {
 	border-radius: 30px;
