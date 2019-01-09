@@ -18,6 +18,14 @@
 <title>Lista candidature</title>
 </head>
 <body>
+ <%
+         if(request.getSession().getAttribute("ute")==null)
+         {
+         String site = new String("LoginButtonCand");
+         response.setStatus(response.SC_MOVED_TEMPORARILY);
+         response.setHeader("Location", site); 
+         }
+      %>
 	<fieldset id="fieldsetTable">
 		<legend>Lista candidature accettate</legend>
 		<form action="Logout" id="alignRightOBJ">

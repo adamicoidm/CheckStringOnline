@@ -10,7 +10,14 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
-
+ <%
+         if(request.getSession().getAttribute("ute")==null)
+         {
+         String site = new String("LoginButtonCand");
+         response.setStatus(response.SC_MOVED_TEMPORARILY);
+         response.setHeader("Location", site); 
+         }
+      %>
 	<fieldset id="fieldset">
 		<legend>Pannello di controllo</legend>
 		<br>

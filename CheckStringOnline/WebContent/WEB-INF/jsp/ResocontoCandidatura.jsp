@@ -9,6 +9,14 @@
 <title>Candidatura</title>
 </head>
 <body>
+ <%
+         if(request.getSession().getAttribute("ute")==null)
+         {
+         String site = new String("LoginButtonCand");
+         response.setStatus(response.SC_MOVED_TEMPORARILY);
+         response.setHeader("Location", site); 
+         }
+      %>
 <%-- <% Candidatura candidatura= (Candidatura)request.getAttribute("candidatura"); %> --%>
 <fieldset id="fieldsetTable">
     <legend>Candidatura</legend>
