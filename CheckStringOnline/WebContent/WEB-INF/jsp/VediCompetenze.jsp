@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="DAO.Candidatura"%>
 <%@ page import="DAO.PostgresCompetenzeDAO"%>
+<%@ page import="DAO.Competenza"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 
@@ -46,8 +47,8 @@
 		
 		<% 
 		Object obj= request.getAttribute("ListaCompetenze");
-		List<PostgresCompetenzeDAO> lista_competenze =new ArrayList<PostgresCompetenzeDAO>();
-				lista_competenze=(List<PostgresCompetenzeDAO>) obj;
+		List<Competenza> lista_competenze =new ArrayList<Competenza>();
+				lista_competenze=(List<Competenza>) obj;
 		String table="";
 		for(int i=0;i<lista_competenze.size();i++){
 				table+="<td>"+lista_competenze.get(i).getNomeCompetenza()+"</td>";

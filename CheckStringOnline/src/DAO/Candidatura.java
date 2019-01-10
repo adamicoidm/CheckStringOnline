@@ -1,5 +1,10 @@
 package DAO;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import algoritmi.Equals;
+
 public class Candidatura {
 	long id_candidatura;
 	String nome;
@@ -13,6 +18,33 @@ public class Candidatura {
 	String ultimaEsperienza;
 	boolean stato;
 	String note;
+	
+	public void controllaCompetenze() {
+		String[] competenzeDaVerificare = competenze.split(";");
+		for(int i=0;i<competenzeDaVerificare.length;i++) {
+			
+			
+			ApplicationContext context = new ClassPathXmlApplicationContext("/algoritmi/CatenaDiResponsabilita.xml");
+
+			competenze=competenzeDaVerificare.check();
+			Equals algorithmChain = (Equals) context.getBean("equals");	
+			algorithmChain.check(s);
+		}
+		/**
+		 * Split in Array[String]
+		 * 
+		 * for competenza in array
+		 * 
+		 * 		array[i]=check()
+		 * 		nuoveCompetenze+= ", " + array[i]
+		 * 
+		 *
+		 */
+		
+		
+		this.competenze = nuoveCompetenze
+		
+	}
 	
 	public boolean isStato() {
 		return stato;
@@ -212,6 +244,8 @@ public class Candidatura {
 //			return false;
 //		}
 	}
+
+	
 	
 
 }

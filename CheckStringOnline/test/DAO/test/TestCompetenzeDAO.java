@@ -2,6 +2,7 @@ package DAO.test;
 
 import java.util.ArrayList;
 
+import DAO.Competenza;
 import DAO.PostgresCompetenzeDAO;
 
 public class TestCompetenzeDAO {
@@ -27,7 +28,7 @@ public class TestCompetenzeDAO {
 //		log4j
 
 		System.out.println("METODO: vediCompetenze\n");
-		ArrayList<String> competenze = c.vediCompetenze();
+		ArrayList<Competenza> competenze = c.vediCompetenze();
 		if (competenze == null) {
 			System.err.println("Non è stato restituito un oggetto dal metodo");
 			errors++;
@@ -36,7 +37,7 @@ public class TestCompetenzeDAO {
 			errors++;
 		} else {
 			System.out.println("L'ArrayListContiene:");
-			for (String co : competenze) {
+			for (Competenza co : competenze) {
 				System.out.println(co.toString());
 			}
 			System.out.println("\n");

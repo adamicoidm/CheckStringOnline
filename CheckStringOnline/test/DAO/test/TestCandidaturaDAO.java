@@ -14,8 +14,8 @@ public class TestCandidaturaDAO {
 
 		System.out.println("Instanziazione Funzionante!\n\n");
 		
-		Candidatura candidatura = new Candidatura("nome", "cognome", "email@d", "11-11-11", "numTelefono",
-				"titoloStudio", "livelloEsperienza", "competenze", "ultimaEsperienza");
+		Candidatura candidatura = new Candidatura(0, "nome", "cognome", "email@d", "11-11-11", "numTelefono",
+				"titoloStudio", "livelloEsperienza", "competenze", false, "ultimaEsperienza");
 		System.out.println("METODO: inserisciCandidatura PARAMETRI: " + candidatura.toString() + "\n");
 		System.out.flush();
 		c.inserisciCandidatura(candidatura);
@@ -32,7 +32,7 @@ public class TestCandidaturaDAO {
 		} else {
 			System.out.println("L'ArrayListContiene:");
 			for (Candidatura ca : candidature) {
-				System.out.println(ca.toString());
+				System.out.println(ca.getNome());
 			}
 			System.out.println("\n");
 		}
@@ -49,7 +49,7 @@ public class TestCandidaturaDAO {
 		} else {
 			System.out.println("L'ArrayListContiene:");
 			for (Candidatura ca : candidature) {
-				System.out.println(ca.toString());
+				System.out.println(ca.getNome());
 			}
 			System.out.println("\n");
 		}
@@ -66,7 +66,7 @@ public class TestCandidaturaDAO {
 		} else {
 			System.out.println("L'ArrayListContiene:");
 			for (Candidatura ca : candidature) {
-				System.out.println(ca.toString());
+				System.out.println(ca.getNome());
 			}
 			System.out.println("\n");
 		}

@@ -12,11 +12,9 @@ public class TestAlgoritmi {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/algoritmi/CatenaDiResponsabilita.xml");
-		
 
-//		String s = "Isole Vergini Britanni";
-		String s = "aaaaaaaaaaaaaaaa"; //non trova niente ma fa vedere che algoritmi ci sono
-		
+		String s = "Isole Vergini Britanni";
+//		String s = "aaaaaaaaaaaaaaaa"; //non trova niente ma fa vedere che algoritmi ci sono
 
 		Equals CATENADIANDROMEDA = (Equals) context.getBean("equals");	
 		CATENADIANDROMEDA.check(s);

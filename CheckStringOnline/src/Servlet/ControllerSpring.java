@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import DAO.Candidatura;
+import DAO.Competenza;
 import DAO.CompetenzeDAO;
 import DAO.PostgreCandidaturaDAO;
 import DAO.PostgresCompetenzeDAO;
@@ -73,8 +74,10 @@ public class ControllerSpring extends HttpServlet {
 	}
 	
 	@GetMapping(value = "/addCandidatura")
-	public String addCandidatura(@ModelAttribute("/addCandidatura") CompetenzeDAO competenze,Candidatura candidatura, ModelMap model)
+	public String addCandidatura(@ModelAttribute("/addCandidatura") Competenza competenze,Candidatura candidatura, ModelMap model)
 			throws ClassNotFoundException {
+		candidatura.controllaCompetenze();
+		candidatura.insertCandidatura();
 		model.addAttribute("nome", candidatura.getNome());
 		model.addAttribute("cognome", candidatura.getCognome());
 		model.addAttribute("email", candidatura.getEmail());
@@ -84,7 +87,8 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("competenze", candidatura.getCompetenze());
 		model.addAttribute("livelloEsperienza", candidatura.getLivelloEsperienza());
 		model.addAttribute("ultimaEsperienza", candidatura.getUltimaEsperienza());
-		candidatura.insertCandidatura();
+		
+		
 		return "candidaturaCompletata";
 	}
 
@@ -125,7 +129,7 @@ public class ControllerSpring extends HttpServlet {
 	public String vediCompetenze(@ModelAttribute("/VediCompetenze") ArrayList<String> competenze, ModelMap model)
 			throws ClassNotFoundException {
 		PostgresCompetenzeDAO c = new PostgresCompetenzeDAO();
-		List<PostgresCompetenzeDAO> competenze1 = c.vediCompetenze();
+		List<Competenza> competenze1 = c.vediCompetenze();
 		model.addAttribute("ListaCompetenze", competenze1);
 		return "VediCompetenze";
 	}

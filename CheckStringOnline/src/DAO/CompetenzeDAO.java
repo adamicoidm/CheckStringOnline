@@ -8,7 +8,7 @@ public interface CompetenzeDAO {
 
 	void rimuoviCompetenza(String nomeCompetenza) throws ClassNotFoundException;
 
-	ArrayList<PostgresCompetenzeDAO> vediCompetenze() throws ClassNotFoundException;
+	ArrayList<Competenza> vediCompetenze() throws ClassNotFoundException;
 
 	String getCompetenza(String nomeCompetenza) throws ClassNotFoundException;
 }
