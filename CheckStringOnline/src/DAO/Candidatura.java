@@ -1,5 +1,7 @@
 package DAO;
 
+import java.util.ArrayList;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,38 +16,48 @@ public class Candidatura {
 	String numTelefono;
 	String titoloStudio;
 	String livelloEsperienza;
-	String competenze;
+//	String competenze;
 	String ultimaEsperienza;
 	boolean stato;
 	String note;
-	
-	public void controllaCompetenze() {
-		String[] competenzeDaVerificare = competenze.split(";");
-		for(int i=0;i<competenzeDaVerificare.length;i++) {
-			
-			
-			ApplicationContext context = new ClassPathXmlApplicationContext("/algoritmi/CatenaDiResponsabilita.xml");
 
-			competenze=competenzeDaVerificare.check();
-			Equals algorithmChain = (Equals) context.getBean("equals");	
-			algorithmChain.check(s);
-		}
+	public void controllaCompetenze() throws ClassNotFoundException {
+//		String[] competenzeDaVerificare = competenze.split(";");
+//		ArrayList<String[]> competenzeEcorrispondenze = new ArrayList<String[]>();
+//
+//		ApplicationContext context = new ClassPathXmlApplicationContext("./algoritmi/CatenaDiResponsabilita.xml");
+//
+//		Equals algorithmChain = (Equals) context.getBean("equals");
+//
+//		String s ="";
+//		
+//		PostgresSinonimiDAO p = new PostgresSinonimiDAO(); 
+//		
+//		for (int i = 0; i < competenzeDaVerificare.length; i++) {
+//			String[] array = new String[2];
+//			array[0]= competenzeDaVerificare[i];
+//			competenzeEcorrispondenze.add(array);
+//			competenzeEcorrispondenze.get(i)[1] = algorithmChain.check(competenzeEcorrispondenze.get(i)[0]);
+//			if(!p.containsSinonimo(competenzeEcorrispondenze.get(i)[1])) {
+//				p.inserisciSinonimo(competenzeEcorrispondenze.get(i)[0],competenzeEcorrispondenze.get(i)[1]);
+//			}
+//			
+//			s+=competenzeEcorrispondenze.get(i)[1] + "+";
+//			
+//		}
+//		this.competenze = s;
 		/**
 		 * Split in Array[String]
 		 * 
 		 * for competenza in array
 		 * 
-		 * 		array[i]=check()
-		 * 		nuoveCompetenze+= ", " + array[i]
+		 * array[i]=check() nuoveCompetenze+= ", " + array[i]
 		 * 
 		 *
 		 */
-		
-		
-		this.competenze = nuoveCompetenze
-		
+
 	}
-	
+
 	public boolean isStato() {
 		return stato;
 	}
@@ -101,28 +113,11 @@ public class Candidatura {
 //		this.competenze = competenze;
 //		this.ultimaEsperienza = ultimaEsperienza;
 //	}
-	
 
-//	public Candidatura(long id,String nome, String cognome, String email, String dataNascita, String numTelefono,
-//			String titoloStudio, String livelloEsperienza, String competenze, String ultimaEsperienza) {
-//		super();
-//		this.id_candidatura=id;
-//		this.nome = nome;
-//		this.cognome = cognome;
-//		this.email = email;
-//		this.dataNascita = dataNascita;
-//		this.numTelefono = numTelefono;
-//		this.titoloStudio = titoloStudio;
-//		this.livelloEsperienza = livelloEsperienza;
-//		this.competenze = competenze;
-//		this.ultimaEsperienza = ultimaEsperienza;
-//	}
-	
-	public Candidatura(long id_candidatura, String nome, String cognome, String email, String dataNascita,
-			 String numTelefono,String titoloStudio, String livelloEsperienza,
-			String ultimaEsperienza, boolean stato, String note) {
+	public Candidatura(long id,String nome, String cognome, String email, String dataNascita, String numTelefono,
+			String titoloStudio, String livelloEsperienza, String competenze, String ultimaEsperienza) {
 		super();
-		this.id_candidatura = id_candidatura;
+		this.id_candidatura=id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -130,10 +125,26 @@ public class Candidatura {
 		this.numTelefono = numTelefono;
 		this.titoloStudio = titoloStudio;
 		this.livelloEsperienza = livelloEsperienza;
+//		this.competenze = competenze;
 		this.ultimaEsperienza = ultimaEsperienza;
-		this.stato = stato;
-		this.note = note;
 	}
+
+//	public Candidatura(long id_candidatura, String nome, String cognome, String email, String dataNascita,
+//			String numTelefono, String titoloStudio, String livelloEsperienza, String ultimaEsperienza, boolean stato,
+//			String note) {
+//		super();
+//		this.id_candidatura = id_candidatura;
+//		this.nome = nome;
+//		this.cognome = cognome;
+//		this.email = email;
+//		this.dataNascita = dataNascita;
+//		this.numTelefono = numTelefono;
+//		this.titoloStudio = titoloStudio;
+//		this.livelloEsperienza = livelloEsperienza;
+//		this.ultimaEsperienza = ultimaEsperienza;
+//		this.stato = stato;
+//		this.note = note;
+//	}
 
 	public String getNome() {
 		return nome;
@@ -175,13 +186,13 @@ public class Candidatura {
 		this.livelloEsperienza = livelloEsperienza;
 	}
 
-	public String getCompetenze() {
-		return competenze;
-	}
-
-	public void setCompetenze(String competenze) {
-		this.competenze = competenze;
-	}
+//	public String getCompetenze() {
+//		return competenze;
+//	}
+//
+//	public void setCompetenze(String competenze) {
+//		this.competenze = competenze;
+//	}
 
 	public String getUltimaEsperienza() {
 		return ultimaEsperienza;
@@ -223,8 +234,7 @@ public class Candidatura {
 
 	public boolean insertCandidatura() throws ClassNotFoundException {
 
-		
-		PostgreCandidaturaDAO cDAO = new PostgreCandidaturaDAO();		
+		PostgreCandidaturaDAO cDAO = new PostgreCandidaturaDAO();
 		return cDAO.inserisciCandidatura(this);
 //		String url = "jdbc:postgresql://localhost:5433/postgres";
 //		String user = "postgres";
@@ -245,8 +255,4 @@ public class Candidatura {
 //		}
 	}
 
-	
-	
-
 }
-

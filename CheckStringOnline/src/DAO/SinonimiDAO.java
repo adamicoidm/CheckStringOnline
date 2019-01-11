@@ -11,4 +11,6 @@ public interface SinonimiDAO {
 	public String getSinonimo(String sinonimo) throws ClassNotFoundException;
 
 	public ArrayList<Sinonimo> vediSinonimi() throws ClassNotFoundException;
+
+	boolean containsSinonimo(String sinonimo) throws ClassNotFoundException;
 }

@@ -5,11 +5,11 @@ import java.io.IOException;
 
 public class Equals extends CheckStringDizionario {
 
-	public Equals() throws FileNotFoundException, IOException {
+	public Equals() throws FileNotFoundException, IOException, ClassNotFoundException {
 		super();
 	}
 
-	public Equals(CheckString c) throws FileNotFoundException, IOException {
+	public Equals(CheckString c) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super(c);
 	}
 	

@@ -6,10 +6,10 @@ import java.io.IOException;
 
 public class HuntMcIlroy extends CheckStringDizionario {
 
-  public HuntMcIlroy(CheckString next) throws FileNotFoundException, IOException {
+  public HuntMcIlroy(CheckString next) throws FileNotFoundException, IOException, ClassNotFoundException {
     super(next);
   }
-  public HuntMcIlroy() throws FileNotFoundException, IOException {
+  public HuntMcIlroy() throws FileNotFoundException, IOException, ClassNotFoundException {
     super();
     
   }

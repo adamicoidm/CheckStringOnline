@@ -9,12 +9,12 @@ public class EditDistance extends CheckStringDizionario {
 
 	
 
-	public EditDistance(int distanza) throws FileNotFoundException, IOException {
+	public EditDistance(int distanza) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super();
 		this.distanza = distanza;
 	}
 
-	public EditDistance(CheckString c, int distanza) throws FileNotFoundException, IOException {
+	public EditDistance(CheckString c, int distanza) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super(c);
 		this.distanza = distanza;
 	}
@@ -22,7 +22,6 @@ public class EditDistance extends CheckStringDizionario {
 	@Override
 	protected boolean singleCheck(String parolaDaConfrontare, String parolaNelDizionario) {
 		return minDistance(parolaDaConfrontare, parolaNelDizionario) == this.distanza;
-
 	}
 
 	public static int minDistance(String word1, String word2) {

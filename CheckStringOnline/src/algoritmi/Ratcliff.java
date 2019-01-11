@@ -5,11 +5,11 @@ import java.io.IOException;
 
 public class Ratcliff extends CheckStringDizionario{
 
-	public Ratcliff() throws FileNotFoundException, IOException {
+	public Ratcliff() throws FileNotFoundException, IOException, ClassNotFoundException {
 		super();
 	}
 	
-	public Ratcliff(CheckString c) throws FileNotFoundException, IOException {
+	public Ratcliff(CheckString c) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super(c);
 	}
 	

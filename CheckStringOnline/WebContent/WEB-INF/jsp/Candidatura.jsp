@@ -51,7 +51,7 @@
 				<option value="Senior">Senior</option>
 			</select><br>
 			<br> Competenze Tecniche:<br>
-			<textarea id="textArea" name="competenze" rows="5" cols="50"
+			<textarea id="textArea" name="stringaCompetenza" rows="5" cols="50"
 				placeholder="Inserire le competenze separate da punto e virgola"  required></textarea>
 			<br>
 			<br> Ultima esperienza Lavorativa<br>

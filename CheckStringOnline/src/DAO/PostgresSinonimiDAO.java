@@ -27,6 +27,14 @@ public class PostgresSinonimiDAO extends PostgresAbstractDAO implements Sinonimi
 		}
 	
 	@Override
+	public boolean containsSinonimo(String sinonimo) throws ClassNotFoundException {
+			
+			String query = "SELECT corrispondenza FROM public.sinonimi WHERE corrispondenza='"+sinonimo+"';";
+			return this.voidQuery(query);
+			
+		}
+	
+	@Override
 	public ArrayList<Sinonimo> vediSinonimi() throws ClassNotFoundException {
 			
 			String query = "SELECT * FROM public.sinonimi";
@@ -35,7 +43,6 @@ public class PostgresSinonimiDAO extends PostgresAbstractDAO implements Sinonimi
 		}
 	
 	private  String StringQuery(String query) throws ClassNotFoundException{
-		
 		
 		ArrayList<Object[]> risultato = super.resultSetExecute(query);
 		if(risultato.size() != 0) {
@@ -49,9 +56,8 @@ public class PostgresSinonimiDAO extends PostgresAbstractDAO implements Sinonimi
 	}
 	
 	
-	private void voidQuery(String query) throws ClassNotFoundException {
-		super.noReturnExecute(query);
-		
+	private boolean voidQuery(String query) throws ClassNotFoundException {
+		return super.noReturnExecute(query);
 	}
 	
 	private  ArrayList<Sinonimo> ArrayListQuery(String query) throws ClassNotFoundException{

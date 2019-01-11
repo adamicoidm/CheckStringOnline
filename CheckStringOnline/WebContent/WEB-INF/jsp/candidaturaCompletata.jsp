@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
   <%@page import="DAO.Candidatura"%>
+  <%@page import="DAO.Competenza" %>
+   <%@page import="DAO.Sinonimo" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +52,7 @@
 	</tr>
 	<tr>
 		<td>Competenze</td>
-		<td>${competenze}</td>
+		<td>${listaSinonimi.competenzaStandard}</td>
 <%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
 	</tr>
 	<tr>

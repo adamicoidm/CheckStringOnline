@@ -43,6 +43,14 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 		return this.ArrayListQuery(query);
 
 	}
+	
+	@Override
+	public ArrayList<String> caricaDizionarioCompetenze() throws ClassNotFoundException {
+
+		String query = "SELECT nome_competenza FROM public.competenza";
+		return this.ArrayListStringQuery(query);
+
+	}
 
 	@Override
 	public String getCompetenza(String nomeCompetenza) throws ClassNotFoundException {
@@ -66,6 +74,20 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 			return s;
 		}
 		return null;
+	}
+	
+	private ArrayList<String> ArrayListStringQuery(String query) throws ClassNotFoundException {
+
+		ArrayList<Object[]> risultato = super.resultSetExecute(query);
+		ArrayList<String> listaS = new ArrayList<String>();
+
+		for (Object[] tupla : risultato) {
+
+			Object s =  tupla[0];
+			String tmp= s.toString();
+			listaS.add(tmp);
+		}
+		return listaS;
 	}
 
 	private ArrayList<Competenza> ArrayListQuery(String query) throws ClassNotFoundException {

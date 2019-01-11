@@ -5,30 +5,25 @@ import java.io.IOException;
 
 public abstract class CheckStringDizionario extends CheckString {
 
-	public CheckStringDizionario() throws FileNotFoundException, IOException {
+	public CheckStringDizionario() throws FileNotFoundException, IOException, ClassNotFoundException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public CheckStringDizionario(CheckString next) throws FileNotFoundException, IOException {
+	public CheckStringDizionario(CheckString next) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super(next);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected final boolean myCheck(String parolaDaConfrontare) {
+	protected final String myCheck(String parolaDaConfrontare) {
 		for (String parolaNelDizionario : super.dizionario) {
-
 			// if (parolaNelDizionario.toLowerCase().contains((CharSequence)
 			// parolaDaConfrontare.toLowerCase())) {
 			if (singleCheck(parolaDaConfrontare.toUpperCase(), parolaNelDizionario.toUpperCase())) {
 				System.out.println("PAROLA TROVATA: \t" + parolaNelDizionario);
-				return true;
-
+				return parolaNelDizionario;
 			}
-
 		}
-		return false;
+		return "";
 	}
 
 	protected abstract boolean singleCheck(String parolaDaConfrontare, String parolaNelDizionario);

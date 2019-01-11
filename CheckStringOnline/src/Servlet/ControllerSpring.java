@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import DAO.Candidatura;
 import DAO.Competenza;
-import DAO.CompetenzeDAO;
 import DAO.PostgreCandidaturaDAO;
 import DAO.PostgresCompetenzeDAO;
+import DAO.Sinonimo;
+import DAO.StringaCompetenza;
 import DAO.Utente;
 
 /**
@@ -26,68 +27,73 @@ import DAO.Utente;
 @SessionAttributes("ute")
 public class ControllerSpring extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	//CONTROLLER SPRING
-	
-	
+
+	// CONTROLLER SPRING
+
 	public ControllerSpring() {
 		super();
 	}
 
-	
-	//HOME
-	
-	
+	// HOME
+
 	@GetMapping(value = "/")
 	public String home() {
 
 		return "Candidatura";
 	}
-	
-	
-	//CANDIDATURE
-	
-	
+
+	// CANDIDATURE
+
 	@GetMapping(value = "/VediCandidature")
-	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList <Candidatura> candidatura,
+	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		ArrayList<Candidatura> candidature = c.vediCandidature();
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
+
 	@GetMapping(value = "/ResocontoCandidatura")
-	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,ArrayList <Candidatura> candidatura,
-			ModelMap model) throws ClassNotFoundException, SQLException {
+	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		candidatura = c.resocontoCandidatura((int) c1.getId_candidatura());
 		model.addAttribute("ListaCandidature", candidatura);
 		return "ResocontoCandidatura";
 	}
+
 	@GetMapping(value = "/VediNuoveCandidature")
-	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList <Candidatura> candidatura,
+	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
 		ArrayList<Candidatura> candidature = c.vediNuoveCandidature();
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
-	
+
 	@GetMapping(value = "/addCandidatura")
-	public String addCandidatura(@ModelAttribute("/addCandidatura") Competenza competenze,Candidatura candidatura, ModelMap model)
-			throws ClassNotFoundException {
-		candidatura.controllaCompetenze();
+	public String addCandidatura(
+			@ModelAttribute("/addCandidatura") /* Competenza competenza */ArrayList<Sinonimo> sinonimi, StringaCompetenza competenza,
+			Candidatura candidatura, ModelMap model) throws ClassNotFoundException {
+		
+		sinonimi = competenza.controllaCompetenze();
+		
+		System.out.println(competenza.getstringaCompetenza());
+		
 		candidatura.insertCandidatura();
+		
 		model.addAttribute("nome", candidatura.getNome());
 		model.addAttribute("cognome", candidatura.getCognome());
 		model.addAttribute("email", candidatura.getEmail());
 		model.addAttribute("dataNascita", candidatura.getDataNascita());
 		model.addAttribute("numTelefono", candidatura.getNumTelefono());
 		model.addAttribute("titoloStudio", candidatura.getTitoloStudio());
-		model.addAttribute("competenze", candidatura.getCompetenze());
+		model.addAttribute("stringaCompetenza", competenza.getstringaCompetenza());
 		model.addAttribute("livelloEsperienza", candidatura.getLivelloEsperienza());
 		model.addAttribute("ultimaEsperienza", candidatura.getUltimaEsperienza());
-		
+		model.addAttribute("listaSinonimi", sinonimi);
+
+		System.out.println(sinonimi);
 		
 		return "candidaturaCompletata";
 	}
@@ -100,28 +106,26 @@ public class ControllerSpring extends HttpServlet {
 		return "VediNuoveCandidature";
 	}
 
-	
-	//COMPETENZE
-	
-	
+	// COMPETENZE
+
 	@GetMapping(value = "/InserisciCompetenza")
-	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList <Candidatura> candidatura,
+	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
 		return "InserisciCompetenza";
 	}
 
 	@GetMapping(value = "/addCompetenza")
-	public String addCompetenza(@ModelAttribute("/addCandidatura")ArrayList<String> competenze,PostgresCompetenzeDAO competenza, ModelMap model)
-			throws ClassNotFoundException {
+	public String addCompetenza(@ModelAttribute("/addCandidatura") ArrayList<String> competenze,
+			PostgresCompetenzeDAO competenza, ModelMap model) throws ClassNotFoundException {
 		competenza.inserisciCompetenza(competenza.getNomeCompetenza());
-		return vediCompetenze(competenze,model);
+		return vediCompetenze(competenze, model);
 	}
 
 	@GetMapping(value = "/removeCompetenza")
-	public String removeCompetenza(@ModelAttribute("/removeCompetenza") ArrayList<String> competenze, PostgresCompetenzeDAO competenza, ModelMap model)
-			throws ClassNotFoundException {
+	public String removeCompetenza(@ModelAttribute("/removeCompetenza") ArrayList<String> competenze,
+			PostgresCompetenzeDAO competenza, ModelMap model) throws ClassNotFoundException {
 		competenza.rimuoviCompetenza(competenza.getNomeCompetenza());
-		
+
 		return vediCompetenze(competenze, model);
 	}
 
@@ -134,18 +138,19 @@ public class ControllerSpring extends HttpServlet {
 		return "VediCompetenze";
 	}
 
-	
-	//USER LOGIN LOGOUT
-	
-	
+	// USER LOGIN LOGOUT
+
 	@GetMapping(value = "/LoginButtonCand")
-	public String Login(@ModelAttribute("/LoginButtonCand") ModelMap model) throws ClassNotFoundException, SQLException {
+	public String Login(@ModelAttribute("/LoginButtonCand") ModelMap model)
+			throws ClassNotFoundException, SQLException {
 		return "Login";
 	}
+
 	@GetMapping(value = "/Login")
-	public String LoginButton(@ModelAttribute("/Login") Utente utente, ModelMap model) throws ClassNotFoundException, SQLException {
-		//model.addAttribute("user", utente.getUser());
-		//	model.addAttribute("password", utente.getPassword());
+	public String LoginButton(@ModelAttribute("/Login") Utente utente, ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		// model.addAttribute("user", utente.getUser());
+		// model.addAttribute("password", utente.getPassword());
 		if ((utente.getUser().equals("Chiara")) && (utente.getPassword().equals("Titti"))) {
 			model.addAttribute("ute", utente);
 			return "PanelControl";
@@ -154,21 +159,22 @@ public class ControllerSpring extends HttpServlet {
 		}
 
 	}
+
 	@GetMapping(value = "/Logout")
-	public String Logout(@ModelAttribute("/Login") Utente utente, ModelMap model) throws ClassNotFoundException, SQLException {
-		//model.addAttribute("user", utente.getUser());
-		//	model.addAttribute("password", utente.getPassword());
-			model.addAttribute("ute", utente);
-			model.remove("ute");
-			return "Login";
+	public String Logout(@ModelAttribute("/Login") Utente utente, ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		// model.addAttribute("user", utente.getUser());
+		// model.addAttribute("password", utente.getPassword());
+		model.addAttribute("ute", utente);
+		model.remove("ute");
+		return "Login";
 	}
-	
-	//PANNELLO DI CONTROLLO
-	
-	
+
+	// PANNELLO DI CONTROLLO
+
 	@GetMapping(value = "/PanelControl")
-	  public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
-	      throws ClassNotFoundException, SQLException {
-	    return "PanelControl";
-	  }
+	public String vaiPanelControl(@ModelAttribute("/PanelControl") ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		return "PanelControl";
 	}
+}

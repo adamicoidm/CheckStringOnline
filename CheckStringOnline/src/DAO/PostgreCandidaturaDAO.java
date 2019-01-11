@@ -83,10 +83,9 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 					(String) tupla[5],
 					(String) tupla[6],
 					(String) tupla[7],
-					(String) tupla[8],
-					(Boolean) tupla[9],
-					(String) tupla[10]);
-			listaC.add(c);
+					"",
+					(String) tupla[8]);
+					listaC.add(c);
 		}
 
 		

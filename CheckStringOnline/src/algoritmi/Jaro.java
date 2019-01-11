@@ -5,11 +5,11 @@ import java.io.IOException;
 
 public class Jaro extends CheckStringDizionario {
 
-	public Jaro() throws FileNotFoundException, IOException {
+	public Jaro() throws FileNotFoundException, IOException, ClassNotFoundException {
 		super();
 	}
 	
-	public Jaro(CheckString c) throws FileNotFoundException, IOException {
+	public Jaro(CheckString c) throws FileNotFoundException, IOException, ClassNotFoundException {
 		super(c);
 	}
 
@@ -114,7 +114,7 @@ public class Jaro extends CheckStringDizionario {
 		return "Jaro";
 	}
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		Jaro j = new Jaro();
 		System.out.println(j.compare("rognosamentemale","rognosamentemal"));
 	}
