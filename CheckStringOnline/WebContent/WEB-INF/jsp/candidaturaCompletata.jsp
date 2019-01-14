@@ -3,6 +3,9 @@
   <%@page import="DAO.Candidatura"%>
   <%@page import="DAO.Competenza" %>
    <%@page import="DAO.Sinonimo" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,6 @@
 <title>Candidatura</title>
 </head>
 <body>
-<%-- <% Candidatura candidatura= (Candidatura)request.getAttribute("candidatura"); %> --%>
 <fieldset id="fieldsetTable">
     <legend>Candidatura</legend>
 	<br>
@@ -19,46 +21,51 @@
 	<tr>
 		<td>Nome</td>
 		<td>${nome}</td>
-<%-- 		<td> <% String nome = candidatura.getNome(); out.print(nome); %></td> --%>
 	</tr>
 	<tr>
 		<td>Cognome</td>
 		<td>${cognome}</td>
-<%-- 		<td> <% String cognome = candidatura.getCognome(); out.print(cognome); %></td> --%>
 	</tr>
 	<tr>
 		<td>E-mail</td>
 		<td>${email}</td>
-<%-- 		<td> <% String email = candidatura.getEmail(); out.print(email); %></td> --%>
 	</tr>
 	<tr>
 		<td>Data di nascita</td>
 		<td>${dataNascita}</td>
-<%-- 	<td> <% String dataNascita = candidatura.getDataNascita(); out.print(dataNascita); %></td></tr> --%>
 	<tr>
 		<td>Numero di telefono</td>	
 		<td>${numTelefono}</td>
-<%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 		<tr>
 		<td>Titolo di Studio</td>	
 		<td>${titoloStudio}</td>
-<%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 	<tr>
 		<td>Livello di esperienza</td>
 		<td>${livelloEsperienza}</td>
-<%-- 		<td> <% String livelloEsperienza =candidatura.getLivelloEsperienza(); out.print(livelloEsperienza); %></td> --%>
 	</tr>
 	<tr>
 		<td>Competenze</td>
-		<td>${listaSinonimi.competenzaStandard}</td>
-<%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
+		<td>
+		<% 
+		Object obj= request.getAttribute("listaSinonimi");
+		List<Sinonimo> lista_sinonimi =new ArrayList<Sinonimo>();
+				lista_sinonimi=(List<Sinonimo>) obj;
+		String table="";
+		for(int i=0;i<lista_sinonimi.size();i++){
+			if(lista_sinonimi.get(i).getCompetenzaStandard()!="")
+				table+=lista_sinonimi.get(i).getCompetenzaStandard()+" <br> ";
+			else
+				table+=lista_sinonimi.get(i).getCorrispondenza()+" <br> ";
+		}
+		out.println(table);
+		%>
+		</td>
 	</tr>
 	<tr>
 		<td>Ultima esperienza</td>
 		<td>${ultimaEsperienza}</td>
-<%-- 		<td> <% String ultimaEsperienza = candidatura.getUltimaEsperienza(); out.print(ultimaEsperienza); %></td> --%>
 	</tr>
 </table>
 

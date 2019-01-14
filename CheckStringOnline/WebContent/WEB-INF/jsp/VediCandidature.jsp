@@ -3,10 +3,10 @@
 <%@ page import="DAO.Candidatura"%>
 <%@ page import="DAO.Utente"%>
 <%@ page import="java.util.ArrayList"%>
-
+<%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
-<%@ page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
 <head>
