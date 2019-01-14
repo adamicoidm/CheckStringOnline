@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import DAO.Candidatura;
 import DAO.Competenza;
-import DAO.PostgreCandidaturaDAO;
+import DAO.Candidatura2Competenze;
+import DAO.PostgresCandidatura2Competenze;
+import DAO.PostgresCandidaturaDAO;
 import DAO.PostgresCompetenzeDAO;
 import DAO.Sinonimo;
 import DAO.StringaCompetenza;
@@ -47,7 +49,7 @@ public class ControllerSpring extends HttpServlet {
 	@GetMapping(value = "/VediCandidature")
 	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
 		ArrayList<Candidatura> candidature = c.vediCandidature();
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
@@ -56,7 +58,7 @@ public class ControllerSpring extends HttpServlet {
 	@GetMapping(value = "/ResocontoCandidatura")
 	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,
 			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
 		candidatura = c.resocontoCandidatura((int) c1.getId_candidatura());
 		model.addAttribute("ListaCandidature", candidatura);
 		return "ResocontoCandidatura";
@@ -65,7 +67,7 @@ public class ControllerSpring extends HttpServlet {
 	@GetMapping(value = "/VediNuoveCandidature")
 	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgreCandidaturaDAO c = new PostgreCandidaturaDAO();
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
 		ArrayList<Candidatura> candidature = c.vediNuoveCandidature();
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
@@ -75,13 +77,16 @@ public class ControllerSpring extends HttpServlet {
 	public String addCandidatura(
 			@ModelAttribute("/addCandidatura") /* Competenza competenza */ArrayList<Sinonimo> sinonimi, StringaCompetenza competenza,
 			Candidatura candidatura, ModelMap model) throws ClassNotFoundException {
-		
+		//CheckStringOnline
 		sinonimi = competenza.controllaCompetenze();
-		
-		System.out.println(competenza.getstringaCompetenza());
-		
+		//Inserisco Candidatura
 		candidatura.insertCandidatura();
-		
+		//Inserisco la competenza nella candidatura
+		for(int i=0;i<sinonimi.size();i++) {
+			PostgresCandidatura2Competenze c2c=new PostgresCandidatura2Competenze();
+			c2c.inserisciCandidatura2Competenze(candidatura.getDBID(candidatura) , sinonimi.get(i).getCompetenzaStandard());
+		}
+	
 		model.addAttribute("nome", candidatura.getNome());
 		model.addAttribute("cognome", candidatura.getCognome());
 		model.addAttribute("email", candidatura.getEmail());
@@ -92,8 +97,6 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("livelloEsperienza", candidatura.getLivelloEsperienza());
 		model.addAttribute("ultimaEsperienza", candidatura.getUltimaEsperienza());
 		model.addAttribute("listaSinonimi", sinonimi);
-
-		System.out.println(sinonimi);
 		
 		return "candidaturaCompletata";
 	}
@@ -101,8 +104,8 @@ public class ControllerSpring extends HttpServlet {
 	@GetMapping(value = "/accettaCandidatura")
 	public String accettaCandidatura(@ModelAttribute("/acceptCandidatura") Candidatura candidatura, ModelMap model)
 			throws ClassNotFoundException {
-		PostgreCandidaturaDAO aC = new PostgreCandidaturaDAO();
-		aC.accettaCandidatura(candidatura, candidatura.getId_candidatura());
+		PostgresCandidaturaDAO aC = new PostgresCandidaturaDAO();
+		aC.accettaCandidatura(candidatura, candidatura.getId_candidatura(),candidatura.getStato());
 		return "VediNuoveCandidature";
 	}
 

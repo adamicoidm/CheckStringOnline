@@ -2,12 +2,12 @@ package DAO;
 
 import java.util.ArrayList;
 
-public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements CandidaturaDAO{
+public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements CandidaturaDAO{
 
-	public PostgreCandidaturaDAO() {
+	public PostgresCandidaturaDAO() {
 		super();
 	}
-	public PostgreCandidaturaDAO(String url, String user, String password, String driver) {
+	public PostgresCandidaturaDAO(String url, String user, String password, String driver) {
 		super(url, user, password, driver);
 	}
 	
@@ -15,13 +15,17 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 	
 	@Override
 	public ArrayList<Candidatura> vediCandidature() throws ClassNotFoundException {
-		String query = "SELECT * FROM public.candidatura WHERE stato=true";
+		String query = "SELECT * FROM public.candidatura WHERE stato='true'";
 		return this.ArrayListQuery(query);
 	}
-	
+	@Override
+	public ArrayList<Candidatura> getId_New_Candidatura(Candidatura c) throws ClassNotFoundException {
+		String query = "SELECT * FROM public.candidatura WHERE nome='"+c.getNome()+"' AND cognome='"+c.getCognome()+"' AND email='"+c.getEmail()+"' AND data_nascita='"+c.getDataNascita()+"' AND num_telefono='"+c.getNumTelefono()+"' AND titolo_studio='"+c.getTitoloStudio()+"' AND livello_esperienza='"+c.getLivelloEsperienza()+"' AND ultima_esperienza='"+c.getUltimaEsperienza()+"'";
+		return this.ArrayListQuery(query);
+	}
 	@Override
 	public ArrayList<Candidatura> resocontoCandidatura(int index) throws ClassNotFoundException {
-		String query = "SELECT * FROM public.candidatura WHERE id_candidatura='"+index+"'";
+		String query = "SELECT * FROM public.candidatura JOIN  WHERE id_candidatura='"+index+"'";
 		return this.ArrayListQuery(query);
 	}
 	@Override
@@ -43,10 +47,10 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 		return this.booleanQuery(query);
 
 	}
-	
-	public boolean accettaCandidatura(Candidatura c,long id_candidatura) throws ClassNotFoundException {
 
-		String query = "UPDATE public.candidatura SET stato = true WHERE id_candidatura="+id_candidatura;
+	public boolean accettaCandidatura(Candidatura c,long id_candidatura,String stato) throws ClassNotFoundException {
+
+		String query = "UPDATE public.candidatura SET stato ='"+stato+"' WHERE id_candidatura="+id_candidatura;
 
 		return this.booleanQuery(query);
 
@@ -83,8 +87,9 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 					(String) tupla[5],
 					(String) tupla[6],
 					(String) tupla[7],
-					"",
-					(String) tupla[8]);
+					(String) tupla[8],
+					(String) tupla[9],
+					(String) tupla[10]);
 					listaC.add(c);
 		}
 
@@ -92,7 +97,6 @@ public class PostgreCandidaturaDAO extends PostgresAbstractDAO implements Candid
 		return listaC;
 	
 	}
-	
 	
 	
 

@@ -13,4 +13,6 @@ public interface CandidaturaDAO {
 	public abstract ArrayList<Candidatura> resocontoCandidatura(int index) throws ClassNotFoundException;
 	
 	public abstract boolean inserisciCandidatura(Candidatura c) throws ClassNotFoundException ;
+
+	ArrayList<Candidatura> getId_New_Candidatura(Candidatura c) throws ClassNotFoundException;
 }

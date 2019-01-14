@@ -31,7 +31,6 @@ public class StringaCompetenza {
 
 		CheckString algorithmChain = (Equals) context.getBean("equals");
 
-		String s ="";
 		
 		PostgresSinonimiDAO p = new PostgresSinonimiDAO(); 
 		

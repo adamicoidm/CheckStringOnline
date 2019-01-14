@@ -2,11 +2,6 @@ package DAO;
 
 import java.util.ArrayList;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import algoritmi.Equals;
-
 public class Candidatura {
 	long id_candidatura;
 	String nome;
@@ -16,9 +11,9 @@ public class Candidatura {
 	String numTelefono;
 	String titoloStudio;
 	String livelloEsperienza;
-//	String competenze;
+	String competenze;
 	String ultimaEsperienza;
-	boolean stato;
+	String stato;
 	String note;
 
 	public void controllaCompetenze() throws ClassNotFoundException {
@@ -58,18 +53,20 @@ public class Candidatura {
 
 	}
 
-	public boolean isStato() {
+
+	public String getStato() {
 		return stato;
 	}
 
-	public void setStato(boolean stato) {
+
+	public void setStato(String stato) {
 		this.stato = stato;
 	}
 
 	public String getNote() {
 		return note;
 	}
-
+	
 	public void setNote(String note) {
 		this.note = note;
 	}
@@ -114,10 +111,10 @@ public class Candidatura {
 //		this.ultimaEsperienza = ultimaEsperienza;
 //	}
 
-	public Candidatura(long id,String nome, String cognome, String email, String dataNascita, String numTelefono,
+	public Candidatura(long id, String nome, String cognome, String email, String dataNascita, String numTelefono,
 			String titoloStudio, String livelloEsperienza, String competenze, String ultimaEsperienza) {
 		super();
-		this.id_candidatura=id;
+		this.id_candidatura = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -125,26 +122,25 @@ public class Candidatura {
 		this.numTelefono = numTelefono;
 		this.titoloStudio = titoloStudio;
 		this.livelloEsperienza = livelloEsperienza;
-//		this.competenze = competenze;
+		this.competenze = competenze;
 		this.ultimaEsperienza = ultimaEsperienza;
 	}
 
-//	public Candidatura(long id_candidatura, String nome, String cognome, String email, String dataNascita,
-//			String numTelefono, String titoloStudio, String livelloEsperienza, String ultimaEsperienza, boolean stato,
-//			String note) {
-//		super();
-//		this.id_candidatura = id_candidatura;
-//		this.nome = nome;
-//		this.cognome = cognome;
-//		this.email = email;
-//		this.dataNascita = dataNascita;
-//		this.numTelefono = numTelefono;
-//		this.titoloStudio = titoloStudio;
-//		this.livelloEsperienza = livelloEsperienza;
-//		this.ultimaEsperienza = ultimaEsperienza;
-//		this.stato = stato;
-//		this.note = note;
-//	}
+	public Candidatura(long id_candidatura, String nome, String cognome, String email, String dataNascita,
+			String numTelefono, String titoloStudio, String livelloEsperienza, String ultimaEsperienza, String stato,String note) {
+		super();
+		this.id_candidatura = id_candidatura;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.dataNascita = dataNascita;
+		this.numTelefono = numTelefono;
+		this.titoloStudio = titoloStudio;
+		this.livelloEsperienza = livelloEsperienza;
+		this.ultimaEsperienza = ultimaEsperienza;
+		this.stato = stato;
+		this.note = note;
+	}
 
 	public String getNome() {
 		return nome;
@@ -186,14 +182,6 @@ public class Candidatura {
 		this.livelloEsperienza = livelloEsperienza;
 	}
 
-//	public String getCompetenze() {
-//		return competenze;
-//	}
-//
-//	public void setCompetenze(String competenze) {
-//		this.competenze = competenze;
-//	}
-
 	public String getUltimaEsperienza() {
 		return ultimaEsperienza;
 	}
@@ -234,25 +222,15 @@ public class Candidatura {
 
 	public boolean insertCandidatura() throws ClassNotFoundException {
 
-		PostgreCandidaturaDAO cDAO = new PostgreCandidaturaDAO();
+		PostgresCandidaturaDAO cDAO = new PostgresCandidaturaDAO();
 		return cDAO.inserisciCandidatura(this);
-//		String url = "jdbc:postgresql://localhost:5433/postgres";
-//		String user = "postgres";
-//		String password = "admin";
-//		Class.forName("org.postgresql.Driver");
-//		try {
-//			Connection connection = DriverManager.getConnection(url, user, password);
-//			Statement statement = connection.createStatement();
-//			ResultSet resultSet =  statement.executeQuery("INSERT into candidatura(nome,cognome,email,data_nascita,num_telefono,titolo_studio,livello_esperienza,ultima_esperienza) VALUES ('"+nome+"','"+cognome+"','"+email+"','"+dataNascita+"','"+numTelefono+"','"+titoloStudio+"','"+livelloEsperienza+"','"+ultimaEsperienza+"')");
-//			connection.close();
-//			resultSet.close();
-//			statement.close();
-//			return true;
-//		} catch (SQLException e) {
-//			System.out.println("Connection failure.");
-//			e.printStackTrace();
-//			return false;
-//		}
+
 	}
 
+	public long getDBID(Candidatura c) throws ClassNotFoundException {
+		PostgresCandidaturaDAO cDAO = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> cand = cDAO.getId_New_Candidatura(c);
+		return cand.get(0).getId_candidatura();
+
+	}
 }
