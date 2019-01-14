@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
   <%@page import="DAO.Candidatura"%>
+  <%@page import="DAO.Candidatura2Competenze" %>
+  <%@page import="java.util.ArrayList"%>
+  <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +20,6 @@
          response.setHeader("Location", site); 
          }
       %>
-<%-- <% Candidatura candidatura= (Candidatura)request.getAttribute("candidatura"); %> --%>
 <fieldset id="fieldsetTable">
     <legend>Candidatura</legend>
 	<form action="Logout" id="alignRightOBJ">
@@ -37,46 +39,52 @@
 	<tr>
 		<td>Nome</td>
 		<td>${ListaCandidature.get(0).getNome()}</td>
-<%-- 		<td> <% String nome = candidatura.getNome(); out.print(nome); %></td> --%>
 	</tr>
 	<tr>
 		<td>Cognome</td>
 		<td>${ListaCandidature.get(0).getCognome()}</td>
-<%-- 		<td> <% String cognome = candidatura.getCognome(); out.print(cognome); %></td> --%>
 	</tr>
 	<tr>
 		<td>E-mail</td>
 		<td>${ListaCandidature.get(0).getEmail()}</td>
-<%-- 		<td> <% String email = candidatura.getEmail(); out.print(email); %></td> --%>
 	</tr>
 	<tr>
 		<td>Data di nascita</td>
 		<td>${ListaCandidature.get(0).getDataNascita()}</td>
-<%-- 	<td> <% String dataNascita = candidatura.getDataNascita(); out.print(dataNascita); %></td></tr> --%>
 	<tr>
 		<td>Numero di telefono</td>	
 		<td>${ListaCandidature.get(0).getNumTelefono()}</td>
-<%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 		<tr>
 		<td>Titolo di Studio</td>	
 		<td>${ListaCandidature.get(0).getTitoloStudio()}</td>
-<%-- 		<td> <% String titoloStudio = candidatura.getTitoloStudio(); out.print(titoloStudio); %></td> --%>
 	</tr>
 	<tr>
 		<td>Livello di esperienza</td>
 		<td>${ListaCandidature.get(0).getLivelloEsperienza()}</td>
-<%-- 		<td> <% String livelloEsperienza =candidatura.getLivelloEsperienza(); out.print(livelloEsperienza); %></td> --%>
 	</tr>
-	<tr>
-		<td>Stato</td>
-		<td>${ListaCandidature.get(0).getStato()}</td>
-<%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
-	</tr>
+
 	<tr>
 		<td>Ultima esperienza</td>
 		<td>${ListaCandidature.get(0).getUltimaEsperienza()}</td>
-<%-- 		<td> <% String ultimaEsperienza = candidatura.getUltimaEsperienza(); out.print(ultimaEsperienza); %></td> --%>
+	</tr>
+		<tr>
+		<td>Competenze</td>
+		<td>	<% 
+		Object obj= request.getAttribute("listaCompetenze");
+		List<Candidatura2Competenze> lista_competenze = new ArrayList<Candidatura2Competenze>();
+		lista_competenze= (List<Candidatura2Competenze>) obj;
+		String table="";
+		for(int i=0;i<lista_competenze.size();i++){
+				table+=lista_competenze.get(i).getNomeCompetenza()+" <br> ";
+		}
+		out.println(table);
+		%>
+		</td>
+	</tr>
+		<tr>
+		<td>Stato</td>
+		<td>${ListaCandidature.get(0).getStato()}</td>
 	</tr>
 </table>
 <form action="VediNuoveCandidature">

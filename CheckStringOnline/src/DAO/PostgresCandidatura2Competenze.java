@@ -50,8 +50,7 @@ public class PostgresCandidatura2Competenze extends PostgresAbstractDAO implemen
 		for(Object[] tupla : risultato) {
 		
 			Candidatura2Competenze c = new Candidatura2Competenze(
-					
-					(long) tupla[0],
+					tupla[0],
 					(String) tupla[1].toString());
 					listaC.add(c);
 		}

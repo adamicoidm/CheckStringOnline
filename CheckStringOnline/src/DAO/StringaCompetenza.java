@@ -3,6 +3,7 @@ package DAO;
 import java.util.ArrayList;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import algoritmi.CheckString;
@@ -56,7 +57,7 @@ public class StringaCompetenza {
 			
 			sin.add(si);
 		}
-		
+		((ConfigurableApplicationContext)context).close();
 		return sin;
 		
 		
