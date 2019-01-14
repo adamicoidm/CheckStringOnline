@@ -61,7 +61,7 @@
 				table+="<td>"+lista_candidature.get(i).getCognome()+"</td>";
 				table+="<td>"+lista_candidature.get(i).getTitoloStudio()+"</td>";
 				table+="<td>"+lista_candidature.get(i).getLivelloEsperienza()+"</td>";
-				table+="<td>"+lista_candidature.get(i).isStato()+"</td>";
+				table+="<td>"+lista_candidature.get(i).getStato()+"</td>";
 				table+="<td><input type='submit' value='Vedi Candidatura'></td>";
 					table+="</tr></form>";
 		}

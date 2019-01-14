@@ -23,14 +23,13 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 		String query = "SELECT * FROM public.candidatura WHERE nome='"+c.getNome()+"' AND cognome='"+c.getCognome()+"' AND email='"+c.getEmail()+"' AND data_nascita='"+c.getDataNascita()+"' AND num_telefono='"+c.getNumTelefono()+"' AND titolo_studio='"+c.getTitoloStudio()+"' AND livello_esperienza='"+c.getLivelloEsperienza()+"' AND ultima_esperienza='"+c.getUltimaEsperienza()+"'";
 		return this.ArrayListQuery(query);
 	}
-	@Override
-	public ArrayList<Candidatura> resocontoCandidatura(int index) throws ClassNotFoundException {
-		String query = "SELECT * FROM public.candidatura JOIN  WHERE id_candidatura='"+index+"'";
+	public ArrayList<Candidatura> resocontoCandidatura(long index) throws ClassNotFoundException {
+		String query = "SELECT * FROM public.candidatura WHERE id_candidatura='"+index+"'";
 		return this.ArrayListQuery(query);
 	}
 	@Override
 	public ArrayList<Candidatura> vediNuoveCandidature() throws ClassNotFoundException {		
-		String query = "SELECT * FROM candidatura WHERE stato='false'";
+		String query = "SELECT * FROM candidatura WHERE stato='Nuova'";
 		return this.ArrayListQuery(query);
 	}
 	

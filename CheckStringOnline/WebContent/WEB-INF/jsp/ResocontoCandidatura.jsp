@@ -70,7 +70,7 @@
 	</tr>
 	<tr>
 		<td>Stato</td>
-		<td>${ListaCandidature.get(0).isStato()}</td>
+		<td>${ListaCandidature.get(0).getStato()}</td>
 <%-- 		<td> <% String competenze = candidatura.getCompetenze(); out.print(competenze); %></td> --%>
 	</tr>
 	<tr>
