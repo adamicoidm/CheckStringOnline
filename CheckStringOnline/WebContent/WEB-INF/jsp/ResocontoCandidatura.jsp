@@ -20,7 +20,7 @@
          response.setHeader("Location", site); 
          }
       %>
-<fieldset id="fieldsetTable">
+<fieldset id="fieldset">
     <legend>Candidatura</legend>
 	<form action="Logout" id="alignRightOBJ">
 		<p>Sei connesso come ${ute.user}</p>
@@ -32,6 +32,7 @@
 		<br><br><br>
 		<br><br><br>
 <table>
+
 	<tr>
 		<th>CAMPO</th>
 		<th>DATI</th>
@@ -86,8 +87,41 @@
 		<td>Stato</td>
 		<td>${ListaCandidature.get(0).getStato()}</td>
 	</tr>
+
+<!-- 	<tr> -->
+<!-- 			<td>Cambia stato</td> -->
+<!-- 			<td> -->
+<!-- 				<form action='CambiaStato' method='get'> -->
+<!-- 					<input type='hidden'name='id_candidatura' value='"+lista_candidature.get(i).getId_candidatura()+"'> -->
+<!-- 					<select name='stato'> -->
+<%-- 	 				<option hidden disabled selected >${ListaCandidature.get(0).getStato()}</option> --%>
+<!-- 	 					<option value='Non interessante'>Non interessante</option> -->
+<!-- 	 					<option value='Da rivedere'>Da rivedere</option> -->
+<!-- 	 					<option value='Interessante'>Interessante</option> -->
+<!-- 	 					<option value='Inserito'>Inserito</option> -->
+<!-- 	 				</select><input type='submit' value='Cambia Stato'> -->
+<!-- 	 			</form> -->
+<!-- 	 		</td> -->
+<!-- 	</tr> -->
+	
+<!-- 		<tr> -->
+		
+<!-- 		<td>Stato</td> -->
+<!-- 		<td> -->
+<!-- 			<form action="CambiaStato" method="get"> -->
+<!-- 				<select> -->
+<!-- 					<option value='Da rivedere'>Da rivedere</option> -->
+<!-- 					<option value='Interessante'>Interessante</option> -->
+<!-- 					<option value='Inserito'>Inserito</option> -->
+<!-- 				</select> -->
+<!-- 				<input type="submit" value="Cambia Stato"> -->
+<!-- 			</form> -->
+<!-- 		</td> -->
+	
+<!-- 	</tr> -->
+
 </table>
-<form action="VediNuoveCandidature">
+<form action="VediCandidature">
 	<input type="submit" value="back">
 </form>
 

@@ -8,7 +8,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
-<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +28,7 @@
          response.setHeader("Location", site); 
          }
       %>
-	<fieldset id="fieldsetTable">
+	<fieldset id="fieldset">
 		<legend>Competenze</legend>
 		<form action="Logout" id="alignRightOBJ">
 		<p>Sei connesso come ${ute.user}</p>
@@ -42,7 +41,7 @@
 		<br><br><br>
 		<table>
 		<tr>
-			<th>Nome competenza</th>
+			<th>NOME COMPETENZA</th>
 		</tr>
 		
 		<% 
@@ -51,7 +50,7 @@
 				lista_competenze=(List<Competenza>) obj;
 		String table="";
 		for(int i=0;i<lista_competenze.size();i++){
-				table+="<td>"+lista_competenze.get(i).getNomeCompetenza()+"</td>";
+				table+="<tr><td>"+lista_competenze.get(i).getNomeCompetenza()+"</td>";
 					table+="</tr>";
 		}
 		out.println(table);
@@ -62,8 +61,8 @@
 		
 		<table>
 			<tr>
-				<td>INSERISCI COMPETENZA</td>
-				<td>ELIMINA COMPETENZA</td>
+				<th>INSERISCI COMPETENZA</th>
+				<th>ELIMINA COMPETENZA</th>
 			</tr>
 			<tr>
 				<td>

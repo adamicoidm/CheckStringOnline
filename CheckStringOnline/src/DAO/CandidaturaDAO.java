@@ -15,4 +15,6 @@ public interface CandidaturaDAO {
 	public abstract boolean inserisciCandidatura(Candidatura c) throws ClassNotFoundException ;
 
 	ArrayList<Candidatura> getId_New_Candidatura(Candidatura c) throws ClassNotFoundException;
+	
+	public abstract  boolean cambiaStato(long id_candidatura,String stato)  throws ClassNotFoundException;
 }

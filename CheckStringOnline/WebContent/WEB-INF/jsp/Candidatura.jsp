@@ -33,14 +33,14 @@
 				placeholder="Inserire il numero di telefono" value="3" required><br>
 			<br><label for="campo_studio">Titolo di studio </label><br>
 			<select id="campo_studio" name="titoloStudio" required>
-				<option disabled selected >-- Seleziona titolo di studio --
+				<option class="dropdown" disabled selected >-- Seleziona titolo di studio --
 				</option>
-				<option value="Nessuno" selected>Nessuno</option>
-				<option value="Elementare">Elementare</option>
-				<option value="Media_Inferiore">Media Inferiore</option>
-				<option value="Media_Superiore">Media Superiore</option>
-				<option value="Laurea_Triennale">Laurea Triennale</option>
-				<option value="Laurea_Successiva">Laurea Successiva</option>
+				<option class="dropdown" value="Nessuno" selected>Nessuno</option>
+				<option class="dropdown" value="Elementare">Elementare</option>
+				<option  class="dropdown"value="Media_Inferiore">Media Inferiore</option>
+				<option  class="dropdown"value="Media_Superiore">Media Superiore</option>
+				<option  class="dropdown"value="Laurea_Triennale">Laurea Triennale</option>
+				<option  class="dropdown"value="Laurea_Successiva">Laurea Successiva</option>
 			</select><br>
 			<br> <label for="campo_lavoro">Livello esperienze:</label> <br>
 			<select id="campo_studio" name="livelloEsperienza" required>

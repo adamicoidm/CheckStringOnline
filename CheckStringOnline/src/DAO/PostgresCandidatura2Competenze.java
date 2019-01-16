@@ -1,9 +1,6 @@
 package DAO;
 import java.util.ArrayList;
 
-import DAO.Candidatura2CompetenzeDAO;
-import DAO.Competenza;
-
 public class PostgresCandidatura2Competenze extends PostgresAbstractDAO implements Candidatura2CompetenzeDAO{
 
 	@Override

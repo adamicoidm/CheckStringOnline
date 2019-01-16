@@ -35,7 +35,7 @@ body {
 
 table {
 	border-collapse: collapse;
-	width: 50%;
+	width: 20%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -43,7 +43,7 @@ table {
 th, td {
 	text-align: center;
 	padding: 10px;
-	width: 50%;
+	width: 80%;
 }
 
 tr:nth-child(even) {
@@ -87,12 +87,6 @@ input, select {
 	width: 200px;
 }
 
-select {
-	width: 230px;
-	solid
-	#AAAAAA;
-}
-
 #buttonSubmit, #buttonRegister, #Registra {
 	padding: 10px;
 }
@@ -101,6 +95,13 @@ select {
 	border-color: #8877FF;
 	padding: 10px;
 	font-weight: bold;
+}
+
+#buttonCandidature{
+		border: solid 1px #ccc;
+	border-radius: 10px;
+	padding: 5px;
+	width: 150px;
 }
 
 #alignRightOBJ{
@@ -119,7 +120,6 @@ select {
 	padding: 5px;
 	width: 125px;
 }
-}
-select.dropdown {
-	border-radius: 30px;
-}
+
+
+

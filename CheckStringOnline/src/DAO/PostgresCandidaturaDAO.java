@@ -15,7 +15,7 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 	
 	@Override
 	public ArrayList<Candidatura> vediCandidature() throws ClassNotFoundException {
-		String query = "SELECT * FROM public.candidatura WHERE stato='true'";
+		String query = "SELECT * FROM public.candidatura WHERE stato!='Nuova'";
 		return this.ArrayListQuery(query);
 	}
 	@Override
@@ -47,7 +47,7 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 
 	}
 
-	public boolean accettaCandidatura(Candidatura c,long id_candidatura,String stato) throws ClassNotFoundException {
+	public boolean cambiaStato(long id_candidatura,String stato) throws ClassNotFoundException {
 
 		String query = "UPDATE public.candidatura SET stato ='"+stato+"' WHERE id_candidatura="+id_candidatura;
 
