@@ -31,7 +31,7 @@
 		<br><br><br>
 		<br><br><br>
 		<table>
-		<tr>
+	
 			<td>
 				<form action="VediCompetenze" method="get">
 				<input id="buttonSubmit" type="submit" value="Competenze">

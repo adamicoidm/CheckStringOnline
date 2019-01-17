@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 	<fieldset id="fieldset">
 		<legend>Login</legend>
 		<br><br><br>
@@ -17,7 +16,7 @@
 		<br><br><br>
 		<br><br><br>
 		<br><br><br>
-		<form action="Login" method="get" id="Login" >
+		<form action="Login" method="post" id="Login" >
 			User:<br> 
 			<input type="text" name="user" placeholder="Inserire user" autofocus ><br>
 			Password:<br> 

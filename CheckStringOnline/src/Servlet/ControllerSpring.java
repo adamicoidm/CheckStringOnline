@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import DAO.Candidatura;
-import DAO.Competenza;
 import DAO.Candidatura2Competenze;
+import DAO.Competenza;
 import DAO.PostgresCandidatura2Competenze;
 import DAO.PostgresCandidaturaDAO;
 import DAO.PostgresCompetenzeDAO;
@@ -154,7 +156,7 @@ public class ControllerSpring extends HttpServlet {
 		return "Login";
 	}
 
-	@GetMapping(value = "/Login")
+	@PostMapping(value = "/Login")
 	public String LoginButton(@ModelAttribute("/Login") Utente utente, ModelMap model)
 			throws ClassNotFoundException, SQLException {
 		// model.addAttribute("user", utente.getUser());
@@ -169,14 +171,12 @@ public class ControllerSpring extends HttpServlet {
 	}
 
 	@GetMapping(value = "/Logout")
-	public String Logout(@ModelAttribute("/Login") Utente utente, ModelMap model)
-			throws ClassNotFoundException, SQLException {
-		// model.addAttribute("user", utente.getUser());
-		// model.addAttribute("password", utente.getPassword());
-		model.addAttribute("ute", utente);
-		model.remove("ute");
-		return "Login";
-	}
+     public String logout(HttpSession session, ModelMap model) {
+		session.removeAttribute("ute");
+		model.clear();
+        session.invalidate();
+        return "Login";
+     }
 
 	// PANNELLO DI CONTROLLO
 

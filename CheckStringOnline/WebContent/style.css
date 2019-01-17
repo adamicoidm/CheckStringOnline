@@ -53,6 +53,7 @@ tr:nth-child(even) {
 th {
 	background-color: #AAAAFF;
 	color: white;
+	 cursor: pointer;
 }
 
 #textArea {
