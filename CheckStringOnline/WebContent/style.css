@@ -4,8 +4,10 @@
 		no-repeat;
 	background-position: top center;
 	color: blue;
+	border: 5px;
 	border-style: solid;
 	border-color: lightblue;
+	border-radius: 20px;
 }
 
 #fieldset2 {
@@ -53,7 +55,6 @@ tr:nth-child(even) {
 th {
 	background-color: #AAAAFF;
 	color: white;
-	 cursor: pointer;
 }
 
 #textArea {
@@ -92,12 +93,16 @@ input, select {
 	padding: 10px;
 }
 
-#buttonSubmit:hover, #buttonRegister:hover, #Registra:hover {
+#buttonSubmit:hover, #buttonRegister:hover, #Registra:hover{
 	border-color: #8877FF;
 	padding: 10px;
 	font-weight: bold;
 }
 
+ #buttonCandidature:hover ,#buttonFunction:hover {
+ border-color: #8877FF;
+ font-weight: bold;
+ }
 #buttonCandidature{
 		border: solid 1px #ccc;
 	border-radius: 10px;
@@ -121,6 +126,16 @@ input, select {
 	padding: 5px;
 	width: 125px;
 }
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: green;
+}
+
 
 
 
