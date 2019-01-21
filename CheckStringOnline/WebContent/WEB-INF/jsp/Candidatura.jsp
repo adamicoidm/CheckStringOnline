@@ -37,10 +37,10 @@
 				</option>
 				<option class="dropdown" value="Nessuno" selected>Nessuno</option>
 				<option class="dropdown" value="Elementare">Elementare</option>
-				<option  class="dropdown"value="Media_Inferiore">Media Inferiore</option>
-				<option  class="dropdown"value="Media_Superiore">Media Superiore</option>
-				<option  class="dropdown"value="Laurea_Triennale">Laurea Triennale</option>
-				<option  class="dropdown"value="Laurea_Successiva">Laurea Successiva</option>
+				<option  class="dropdown"value="Media_Inferiore">Media inferiore</option>
+				<option  class="dropdown"value="Media_Superiore">Media superiore</option>
+				<option  class="dropdown"value="Laurea_Triennale">Laurea triennale</option>
+				<option  class="dropdown"value="Laurea_Successiva">Laurea successiva</option>
 			</select><br>
 			<br> <label for="campo_lavoro">Livello esperienze:</label> <br>
 			<select id="campo_studio" name="livelloEsperienza" required>

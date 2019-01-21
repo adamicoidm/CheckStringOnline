@@ -38,7 +38,7 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 		String query = "SELECT * FROM candidatura";
 		return this.ArrayListQuery(query);
 	}
-
+	
 	@Override
 	public boolean inserisciCandidatura(Candidatura c) throws ClassNotFoundException {
 
@@ -46,7 +46,7 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 		return this.booleanQuery(query);
 
 	}
-
+	@Override
 	public boolean cambiaStato(long id_candidatura,String stato) throws ClassNotFoundException {
 
 		String query = "UPDATE public.candidatura SET stato ='"+stato+"' WHERE id_candidatura="+id_candidatura;
@@ -54,7 +54,29 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 		return this.booleanQuery(query);
 
 	}
-
+	@Override
+	public ArrayList<Candidatura> cercaCandidaturaCompetenza(String competenza) throws ClassNotFoundException {
+		if(competenza=="")
+			return null;
+		String query =creaQuery(competenza);
+				
+				return this.ArrayListQuery(query);
+	}
+public String creaQuery(String competenza) {
+	String[] parts = competenza.split("-");
+	String query="SELECT *" + 
+			"	FROM public.candidatura" + 
+			"	WHERE id_candidatura IN (SELECT id_candidatura from candidatura2competenze where competenze='"+parts[0].toUpperCase()+"'";
+	if(parts.length>1) {
+			for (int i = 1; i < parts.length; i++) {
+				query += " AND id_candidatura in (SELECT id_candidatura from candidatura2competenze where competenze='" + parts[i].toUpperCase() + "'";
+			}
+	}
+	for(int i=0;i<parts.length;i++) {
+		query+=")";}
+	query+=";";
+	return query;
+}
 //	public boolean rimuoviCandidatura(Candidatura c) throws ClassNotFoundException {
 //		String query = "DELETE FROM public.candidatura\r\n" + 
 //				"	WHERE id_candidatura=;";????
@@ -96,7 +118,50 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 		return listaC;
 	
 	}
+	@Override
+	public ArrayList<Candidatura> vediTutteCandidatureOrderNome() throws ClassNotFoundException {		
+			String query = "SELECT * FROM candidatura WHERE stato!='Nuova' ORDER BY nome ASC";
+			return this.ArrayListQuery(query);
+		}
+	@Override
+	public ArrayList<Candidatura> vediTutteCandidatureOrderCognome() throws ClassNotFoundException {
+		String query = "SELECT * FROM candidatura WHERE stato!='Nuova' ORDER BY cognome ASC";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> vediTutteCandidatureOrderTitoloStudio() throws ClassNotFoundException {
+		String query = "SELECT * FROM candidatura WHERE stato!='Nuova' ORDER BY titolo_studio ASC";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> vediTutteCandidatureOrderLivelloEsperienza() throws ClassNotFoundException {
+		String query = "SELECT * FROM candidatura WHERE stato!='Nuova' ORDER BY livello_esperienza DESC";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> vediTutteCandidatureOrderStato() throws ClassNotFoundException {
+		String query = "SELECT * FROM candidatura WHERE stato!='Nuova' ORDER BY stato DESC";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> cercaCandidaturaTitoloStudio (String titolostudio) throws ClassNotFoundException {
+		String query = "SELECT * FROM public.candidatura WHERE titolo_studio='"+titolostudio+"'";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> cercaCandidaturaStato(String stato)throws ClassNotFoundException {
+		String query = "SELECT * FROM public.candidatura WHERE stato='"+stato+"'";
+		return this.ArrayListQuery(query);
+	}
+	@Override
+	public ArrayList<Candidatura> cercaCandidaturaLivelloEsperienza(String livelloesperienza) throws ClassNotFoundException{
+		String query = "SELECT * FROM public.candidatura WHERE livello_esperienza='"+livelloesperienza+"'";
+		return this.ArrayListQuery(query);
+	}
+	
+
+
+}
 	
 	
 
-}

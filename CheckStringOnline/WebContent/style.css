@@ -133,7 +133,27 @@ a:link {
 
 a:visited {
   text-decoration: none;
-  color: green;
+  color: white;
+}
+
+#fieldsetSearch {
+	color: blue;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: lightblue;
+	padding: 20px;
+	width: 200px;
+}
+
+#textArea{
+	border-radius: 10px;
+	width: 150px;
+	height: 500px;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
 }
 
 

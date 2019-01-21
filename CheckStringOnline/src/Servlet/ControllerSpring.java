@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import DAO.Candidatura;
@@ -57,27 +58,106 @@ public class ControllerSpring extends HttpServlet {
 		return "VediCandidature";
 	}
 
+	@GetMapping(value = "/OrderBy")
+	public String orderBy(@ModelAttribute("/OrderBy") @RequestParam("order_by") String order_by,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = new ArrayList<Candidatura>();
+		switch (order_by) {
+
+		case "nome":
+			candidature = c.vediTutteCandidatureOrderNome();
+			break;
+		case "cognome":
+			candidature = c.vediTutteCandidatureOrderCognome();
+			break;
+		case "titolostudio":
+			candidature = c.vediTutteCandidatureOrderTitoloStudio();
+			break;
+		case "livelloesperienza":
+			candidature = c.vediTutteCandidatureOrderLivelloEsperienza();
+			break;
+		case "stato":
+			candidature = c.vediTutteCandidatureOrderStato();
+			break;
+		}
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
+
 	@GetMapping(value = "/ResocontoCandidatura")
 	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,
-			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze,ModelMap model) throws ClassNotFoundException, SQLException {
+			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze, ModelMap model)
+			throws ClassNotFoundException, SQLException {
 		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
 		candidatura = c.resocontoCandidatura(c1.getId_candidatura());
 		model.addAttribute("ListaCandidature", candidatura);
-		PostgresCandidatura2Competenze comp= new PostgresCandidatura2Competenze();
-		competenze= comp.getCandidatura2Competenze((Long)(candidatura.get(0).getId_candidatura()));
+		PostgresCandidatura2Competenze comp = new PostgresCandidatura2Competenze();
+		competenze = comp.getCandidatura2Competenze((Long) (candidatura.get(0).getId_candidatura()));
 		model.addAttribute("listaCompetenze", competenze);
 		return "ResocontoCandidatura";
 	}
+	@GetMapping(value = "/cercaCandidaturaCompetenza")
+	public String cercaCandidaturaTitoloStudio(
+			@ModelAttribute("/cercaCandidaturaCompetenza") @RequestParam("comp") StringaCompetenza comp,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.cercaCandidaturaCompetenza(comp.cercaCompetenzeRicerca(comp));
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
+
+	@GetMapping(value = "/cercaCandidaturaTitoloStudio")
+	public String cercaCandidaturaTitoloStudio(
+			@ModelAttribute("/cercaCandidaturaTitoloStudio") @RequestParam("titolostudio") String titolostudio,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.cercaCandidaturaTitoloStudio(titolostudio);
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
+
+	@GetMapping(value = "/cercaCandidaturaStato")
+	public String cercaCandidaturaStato(
+			@ModelAttribute("/cercaCandidaturaTitoloStudio") @RequestParam("stato") String stato,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.cercaCandidaturaStato(stato);
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
 	
+	@GetMapping(value = "/cercaCandidaturaLivelloEsperienza")
+	public String cercaCandidaturaLivelloEsperienza(
+			@ModelAttribute("/cercaCandidaturaLivelloEsperienza") @RequestParam("livelloesperienza") String livelloesperienza,
+			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.cercaCandidaturaLivelloEsperienza(livelloesperienza);
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
 	@GetMapping(value = "/CambiaStato")
-	public String CambiaStato(@ModelAttribute("/CambiaStato") Candidatura c1,
-			ArrayList<Candidatura> candidatura,ModelMap model) throws ClassNotFoundException, SQLException {
+	public String CambiaStato(@ModelAttribute("/CambiaStato") Candidatura c1, ArrayList<Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
 //		System.out.println("ID: "+c1.getId_candidatura()+"Stato: "+c1.getStato());
 		c.cambiaStato(c1.getId_candidatura(), c1.getStato());
 		return vediCandidature(candidatura, model);
 	}
 
+	@GetMapping(value = "/CambiaStatoReoconto")
+	public String CambiaStatoResoconto(@ModelAttribute("/CambiaStatoResoconto") Candidatura c1,
+			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze, ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		c.cambiaStato(c1.getId_candidatura(), c1.getStato());
+		candidatura = c.resocontoCandidatura(c1.getId_candidatura());
+		model.addAttribute("ListaCandidature", candidatura);
+		PostgresCandidatura2Competenze comp = new PostgresCandidatura2Competenze();
+		competenze = comp.getCandidatura2Competenze((Long) (candidatura.get(0).getId_candidatura()));
+		model.addAttribute("listaCompetenze", competenze);
+		return "ResocontoCandidatura";
+	}
 
 	@GetMapping(value = "/VediNuoveCandidature")
 	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
@@ -90,18 +170,19 @@ public class ControllerSpring extends HttpServlet {
 
 	@GetMapping(value = "/addCandidatura")
 	public String addCandidatura(
-			@ModelAttribute("/addCandidatura") /* Competenza competenza */ArrayList<Sinonimo> sinonimi, StringaCompetenza competenza,
-			Candidatura candidatura, ModelMap model) throws ClassNotFoundException {
-		//CheckStringOnline
+			@ModelAttribute("/addCandidatura") /* Competenza competenza */ArrayList<Sinonimo> sinonimi,
+			StringaCompetenza competenza, Candidatura candidatura, ModelMap model) throws ClassNotFoundException {
+		// CheckStringOnline
 		sinonimi = competenza.controllaCompetenze();
-		//Inserisco Candidatura
+		// Inserisco Candidatura
 		candidatura.insertCandidatura();
-		//Inserisco la competenza nella candidatura
-		for(int i=0;i<sinonimi.size();i++) {
-			PostgresCandidatura2Competenze c2c=new PostgresCandidatura2Competenze();
-			c2c.inserisciCandidatura2Competenze(candidatura.getDBID(candidatura) , sinonimi.get(i).getCompetenzaStandard());
+		// Inserisco la competenza nella candidatura
+		for (int i = 0; i < sinonimi.size(); i++) {
+			PostgresCandidatura2Competenze c2c = new PostgresCandidatura2Competenze();
+			c2c.inserisciCandidatura2Competenze(candidatura.getDBID(candidatura),
+					sinonimi.get(i).getCompetenzaStandard());
 		}
-	
+
 		model.addAttribute("nome", candidatura.getNome());
 		model.addAttribute("cognome", candidatura.getCognome());
 		model.addAttribute("email", candidatura.getEmail());
@@ -112,7 +193,7 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("livelloEsperienza", candidatura.getLivelloEsperienza());
 		model.addAttribute("ultimaEsperienza", candidatura.getUltimaEsperienza());
 		model.addAttribute("listaSinonimi", sinonimi);
-		
+
 		return "candidaturaCompletata";
 	}
 
@@ -171,12 +252,12 @@ public class ControllerSpring extends HttpServlet {
 	}
 
 	@GetMapping(value = "/Logout")
-     public String logout(HttpSession session, ModelMap model) {
+	public String logout(HttpSession session, ModelMap model) {
 		session.removeAttribute("ute");
 		model.clear();
-        session.invalidate();
-        return "Login";
-     }
+		session.invalidate();
+		return "Login";
+	}
 
 	// PANNELLO DI CONTROLLO
 

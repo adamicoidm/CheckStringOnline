@@ -18,103 +18,6 @@
 <title>Lista candidature</title>
 
 <script src="https://www.w3schools.com/lib/w3.js"></script>
-<script type="text/javascript">
-
-var TableIDvalue = "indextable";
-
-var TableLastSortedColumn = -1;
-function SortTable() {
-var sortColumn = parseInt(arguments[0]);
-var type = arguments.length > 1 ? arguments[1] : 'T';
-var dateformat = arguments.length > 2 ? arguments[2] : '';
-var table = document.getElementById(TableIDvalue);
-var tbody = table.getElementsByTagName("tbody")[0];
-var rows = tbody.getElementsByTagName("tr");
-var arrayOfRows = new Array();
-type = type.toUpperCase();
-dateformat = dateformat.toLowerCase();
-for(var i=0, len=rows.length; i<len; i++) {
-	arrayOfRows[i] = new Object;
-	arrayOfRows[i].oldIndex = i;
-	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
-	if( type=='D' ) { arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext); }
-	else {
-		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
-		}
-	}
-if (sortColumn == TableLastSortedColumn) { arrayOfRows.reverse(); }
-else {
-	TableLastSortedColumn = sortColumn;
-	switch(type) {
-		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
-		case "D" : arrayOfRows.sort(CompareRowOfNumbers); break;
-		default  : arrayOfRows.sort(CompareRowOfText);
-		}
-	}
-var newTableBody = document.createElement("tbody");
-for(var i=0, len=arrayOfRows.length; i<len; i++) {
-	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
-	}
-table.replaceChild(newTableBody,tbody);
-} // function SortTable()
-
-function CompareRowOfText(a,b) {
-var aval = a.value;
-var bval = b.value;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfText()
-
-function CompareRowOfNumbers(a,b) {
-var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
-var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfNumbers()
-
-function GetDateSortingKey(format,text) {
-if( format.length < 1 ) { return ""; }
-format = format.toLowerCase();
-text = text.toLowerCase();
-text = text.replace(/^[^a-z0-9]*/,"");
-text = text.replace(/[^a-z0-9]*$/,"");
-if( text.length < 1 ) { return ""; }
-text = text.replace(/[^a-z0-9]+/g,",");
-var date = text.split(",");
-if( date.length < 3 ) { return ""; }
-var d=0, m=0, y=0;
-for( var i=0; i<3; i++ ) {
-	var ts = format.substr(i,1);
-	if( ts == "d" ) { d = date[i]; }
-	else if( ts == "m" ) { m = date[i]; }
-	else if( ts == "y" ) { y = date[i]; }
-	}
-d = d.replace(/^0/,"");
-if( d < 10 ) { d = "0" + d; }
-if( /[a-z]/.test(m) ) {
-	m = m.substr(0,3);
-	switch(m) {
-		case "jan" : m = String(1); break;
-		case "feb" : m = String(2); break;
-		case "mar" : m = String(3); break;
-		case "apr" : m = String(4); break;
-		case "may" : m = String(5); break;
-		case "jun" : m = String(6); break;
-		case "jul" : m = String(7); break;
-		case "aug" : m = String(8); break;
-		case "sep" : m = String(9); break;
-		case "oct" : m = String(10); break;
-		case "nov" : m = String(11); break;
-		case "dec" : m = String(12); break;
-		default    : m = String(0);
-		}
-	}
-m = m.replace(/^0/,"");
-if( m < 10 ) { m = "0" + m; }
-y = parseInt(y);
-if( y < 100 ) { y = parseInt(y) + 2000; }
-return "" + String(y) + "" + String(m) + "" + String(d) + "";
-} // function GetDateSortingKey()
-</script>
 
 
 </head>
@@ -134,27 +37,84 @@ return "" + String(y) + "" + String(m) + "" + String(d) + "";
 		<form action="Logout" id="alignRightOBJ">
 		<p>Sei connesso come ${ute.user}</p>
 		<input type='submit' id='buttonFunction'value='Logout'>
-		<br><br>
+		<br><br><br>
 		<a href="PanelControl"><input type="button" id="buttonFunction" value="Home"></a>
 		</form>
-		<br><br><br>
+		<table>
+			<tr>
+				<td>
+					<form action="cercaCandidaturaCompetenza" id='fieldsetSearch'>
+						Ricerca candidature con queste competenze:
+						<br>
+						<input type="text" name="comp" placeholder="Scrivi una competenza da cercare">
+						<br><br>
+						<input type="submit" id="buttonSubmit" value="Cerca Candidatura">
+					</form>
+				</td>
+				<td>
+					<form action="cercaCandidaturaTitoloStudio" id='fieldsetSearch'>
+						Ricerca candidatura con questo titolo di studio:
+						<br>
+						<select name="titolostudio">
+							<option value='Nessuno'>Nessuno</option>
+							<option value='Elementare'>Elementare</option>
+							<option value='Media_Inferiore'>Media inferiore</option>
+							<option value='Media_Superiore'>Media superiore</option>
+							<option value='Laurea_Triennale'>Laurea triennale</option>
+							<option value='Laurea_Successiva'>Laurea successiva</option>
+						</select>
+						<br><br>
+						<input type="submit" id="buttonSubmit" value="Cerca Candidatura">
+					</form>
+				</td>
+					<td>
+					<form action="cercaCandidaturaLivelloEsperienza" id='fieldsetSearch'>
+						Ricerca candidatura con questo livello di esperienza:
+						<br>
+						<select name="livelloesperienza">
+							<option value='Junior'>Junior</option>
+							<option value='Middle'>Middle</option>
+							<option value='Senior'>Senior</option>
+						</select>
+						<br><br>
+						<input type="submit" id="buttonSubmit" value="Cerca Candidatura">
+					</form>
+				</td>
+				<td>
+					<form action="cercaCandidaturaStato" id='fieldsetSearch'>
+						Ricerca candidatura con questo stato:
+						<br>
+						<select name="stato">
+							<option value='Non interessante'>Non interessante</option>
+							<option value='Da rivedere'>Da rivedere</option>
+							<option value='Interessante'>Interessante</option>
+							<option value='Inserito'>Inserito</option>
+						</select>
+						<br><br>
+						<input type="submit" id="buttonSubmit" value="Cerca Candidatura">
+					</form>
+				</td>
+			</tr>
+		</table>
+		
 		<br><br><br>
 			<table id="indextable">
 			<thead>
 				<tr>
-					<th><a href="javascript:SortTable(0,'T');">NOME</a></th>
-					<th><a href="javascript:SortTable(1,'T');">COGNOME</a></th>
-					<th><a href="javascript:SortTable(2,'T');">TITOLO STUDIO</a></th>
-					<th><a href="javascript:SortTable(3,'T');">LIVELLO ESPERIENZA</a></th>
+					<th><a href="OrderBy?order_by=nome">NOME</a></th>
+					<th><a href="OrderBy?order_by=cognome">COGNOME</a></th>
+					<th><a href="OrderBy?order_by=titolostudio">TITOLO STUDIO</a></th>
+					<th><a href="OrderBy?order_by=livelloesperienza">LIVELLO ESPERIENZA</a></th>
 					<th>VEDI CANDIDATURA</th>
-					<th><a href="javascript:SortTable(5,'T');">STATO</a></th>
+					<th><a href="OrderBy?order_by=stato">STATO</a></th>
 					<th>CONFERMA MODIFICA</th>
 				</tr>
-</thead><tbody>
+	</thead>
+	<tbody>
 		<% 
 		Object obj= request.getAttribute("Lista_candidature");
 		List<Candidatura> lista_candidature =new ArrayList<Candidatura>();
-				lista_candidature=(List<Candidatura>) obj;
+				lista_candidature=(ArrayList<Candidatura>) obj;
 		String table="";
 		for(int i=0;i<lista_candidature.size();i++){
 		
@@ -183,11 +143,9 @@ return "" + String(y) + "" + String(m) + "" + String(d) + "";
 					
 		}
 		out.println(table);
-		%></tbody></table>
-		<script type="text/javascript">
-
-    
-            </script>
+		%>
+			</tbody>
+		</table>
 	</fieldset>
 </body>
 </html>

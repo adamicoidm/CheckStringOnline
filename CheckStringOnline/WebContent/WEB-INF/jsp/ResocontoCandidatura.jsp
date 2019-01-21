@@ -84,43 +84,25 @@
 		</td>
 	</tr>
 		<tr>
-		<td>Stato</td>
-		<td>${ListaCandidature.get(0).getStato()}</td>
-	</tr>
-
-<!-- 	<tr> -->
-<!-- 			<td>Cambia stato</td> -->
-<!-- 			<td> -->
-<!-- 				<form action='CambiaStato' method='get'> -->
-<!-- 					<input type='hidden'name='id_candidatura' value='"+lista_candidature.get(i).getId_candidatura()+"'> -->
-<!-- 					<select name='stato'> -->
-<%-- 	 				<option hidden disabled selected >${ListaCandidature.get(0).getStato()}</option> --%>
-<!-- 	 					<option value='Non interessante'>Non interessante</option> -->
-<!-- 	 					<option value='Da rivedere'>Da rivedere</option> -->
-<!-- 	 					<option value='Interessante'>Interessante</option> -->
-<!-- 	 					<option value='Inserito'>Inserito</option> -->
-<!-- 	 				</select><input type='submit' value='Cambia Stato'> -->
-<!-- 	 			</form> -->
-<!-- 	 		</td> -->
-<!-- 	</tr> -->
-	
-<!-- 		<tr> -->
-		
-<!-- 		<td>Stato</td> -->
-<!-- 		<td> -->
-<!-- 			<form action="CambiaStato" method="get"> -->
-<!-- 				<select> -->
-<!-- 					<option value='Da rivedere'>Da rivedere</option> -->
-<!-- 					<option value='Interessante'>Interessante</option> -->
-<!-- 					<option value='Inserito'>Inserito</option> -->
-<!-- 				</select> -->
-<!-- 				<input type="submit" value="Cambia Stato"> -->
-<!-- 			</form> -->
-<!-- 		</td> -->
-	
-<!-- 	</tr> -->
-
-</table>
+		<td>Cambia stato</td>
+		<td><br>
+		<% 
+			table="";
+						table="<form action='CambiaStato' method='get'>";
+							table+="<input type='hidden'name='id_candidatura' value='"+lista_competenze.get(0).getId_candidatura()+"'>";
+							table+="<select name='stato'>";
+			 			//	table+="<option disabled selected >"+ListaCandidature.get(0).getStato()+"</option>";
+			 					table+="<option value='Non interessante'>Non interessante</option>";
+			 					table+="<option value='Da rivedere'>Da rivedere</option>";
+			 					table+="<option value='Interessante'>Interessante</option>";
+			 					table+="<option value='Inserito'>Inserito</option> <br>";
+			 					table+="</select><input type='submit' value='Cambia Stato'>";
+			 			table+="</form>";
+			out.println(table);
+			%>
+			</td>
+		</tr> 
+	</table>
 <form action="VediCandidature">
 	<input type="submit" value="back">
 </form>

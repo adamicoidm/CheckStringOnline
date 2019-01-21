@@ -39,7 +39,7 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 	@Override
 	public ArrayList<Competenza> vediCompetenze() throws ClassNotFoundException {
 
-		String query = "SELECT nome_competenza FROM public.competenza";
+		String query = "SELECT nome_competenza FROM public.competenza ORDER BY nome_competenza";
 		return this.ArrayListQuery(query);
 
 	}

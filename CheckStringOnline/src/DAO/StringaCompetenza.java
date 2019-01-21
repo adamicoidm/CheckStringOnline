@@ -60,19 +60,14 @@ public class StringaCompetenza {
 		((ConfigurableApplicationContext)context).close();
 		return sin;
 		
-		
-		
-		
-		
-		/**
-		 * Split in Array[String]
-		 * 
-		 * for competenza in array
-		 * 
-		 * array[i]=check() nuoveCompetenze+= ", " + array[i]
-		 * 
-		 *
-		 */
 
 	}
+	public String cercaCompetenzeRicerca(StringaCompetenza competenza) throws ClassNotFoundException {
+	String comp="";
+		ArrayList <Sinonimo> sinonimi=competenza.controllaCompetenze();
+		for(int i=0;i<sinonimi.size();i++) {
+			comp=sinonimi.get(i).getCompetenzaStandard()+"-";
+		}
+		return comp;
+		}
 }
