@@ -64,9 +64,12 @@ public class PostgresCandidaturaDAO extends PostgresAbstractDAO implements Candi
 	}
 public String creaQuery(String competenza) {
 	String[] parts = competenza.split("-");
+	for(int i=0;i<parts.length;i++)
+		System.out.println(i+" "+parts[0]+" Lunghezza array: "+parts.length);
 	String query="SELECT *" + 
 			"	FROM public.candidatura" + 
 			"	WHERE id_candidatura IN (SELECT id_candidatura from candidatura2competenze where competenze='"+parts[0].toUpperCase()+"'";
+	System.out.println(query);
 	if(parts.length>1) {
 			for (int i = 1; i < parts.length; i++) {
 				query += " AND id_candidatura in (SELECT id_candidatura from candidatura2competenze where competenze='" + parts[i].toUpperCase() + "'";
@@ -75,6 +78,7 @@ public String creaQuery(String competenza) {
 	for(int i=0;i<parts.length;i++) {
 		query+=")";}
 	query+=";";
+	System.out.println(query);
 	return query;
 }
 //	public boolean rimuoviCandidatura(Candidatura c) throws ClassNotFoundException {

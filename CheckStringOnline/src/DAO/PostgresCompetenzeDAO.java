@@ -32,7 +32,7 @@ public class PostgresCompetenzeDAO extends PostgresAbstractDAO implements Compet
 
 	@Override
 	public void rimuoviCompetenza(String nomeCompetenza) throws ClassNotFoundException {
-		String query = "DELETE FROM public.competenza\r\n" + "	WHERE nome_competenza='" + nomeCompetenza + "';";
+		String query = "DELETE FROM public.competenza" + "	WHERE nome_competenza='" + nomeCompetenza + "';";
 		this.voidQuery(query);
 	}
 

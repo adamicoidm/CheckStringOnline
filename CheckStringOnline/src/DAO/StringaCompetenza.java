@@ -25,7 +25,7 @@ public class StringaCompetenza {
 	}
 	
 	public ArrayList<Sinonimo> controllaCompetenze() throws ClassNotFoundException {
-		String[] competenzeDaVerificare = stringaCompetenza.split(";");
+		String[] competenzeDaVerificare = stringaCompetenza.split("-");
 		ArrayList<String[]> competenzeEcorrispondenze = new ArrayList<String[]>();
 
 		ApplicationContext context = new ClassPathXmlApplicationContext("/algoritmi/CatenaDiResponsabilita.xml");
@@ -66,7 +66,7 @@ public class StringaCompetenza {
 	String comp="";
 		ArrayList <Sinonimo> sinonimi=competenza.controllaCompetenze();
 		for(int i=0;i<sinonimi.size();i++) {
-			comp=sinonimi.get(i).getCompetenzaStandard()+"-";
+			comp+=sinonimi.get(i).getCompetenzaStandard()+"-";
 		}
 		return comp;
 		}

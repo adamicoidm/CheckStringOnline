@@ -52,7 +52,7 @@
 			</select><br>
 			<br> Competenze Tecniche:<br>
 			<textarea id="textArea" name="stringaCompetenza" rows="5" cols="50"
-				placeholder="Inserire le competenze separate da punto e virgola"  required></textarea>
+				placeholder="Inserire le competenze separate da un trattino - "  required></textarea>
 			<br>
 			<br> Ultima esperienza Lavorativa<br>
 			<textarea id="textArea" name="ultimaEsperienza" rows="5" cols="50"

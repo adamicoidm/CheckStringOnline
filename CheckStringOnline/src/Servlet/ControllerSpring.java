@@ -49,6 +49,9 @@ public class ControllerSpring extends HttpServlet {
 
 	// CANDIDATURE
 
+	
+	//VISTE CANDIDATURE
+	
 	@GetMapping(value = "/VediCandidature")
 	public String vediCandidature(@ModelAttribute("/VediCandidature") ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
@@ -57,7 +60,33 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
+	
 
+	@GetMapping(value = "/ResocontoCandidatura")
+	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,
+			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze, ModelMap model)
+			throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		candidatura = c.resocontoCandidatura(c1.getId_candidatura());
+		model.addAttribute("ListaCandidature", candidatura);
+		PostgresCandidatura2Competenze comp = new PostgresCandidatura2Competenze();
+		competenze = comp.getCandidatura2Competenze((Long) (candidatura.get(0).getId_candidatura()));
+		model.addAttribute("listaCompetenze", competenze);
+		return "ResocontoCandidatura";
+	}
+	
+	@GetMapping(value = "/VediNuoveCandidature")
+	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
+			ModelMap model) throws ClassNotFoundException, SQLException {
+		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
+		ArrayList<Candidatura> candidature = c.vediNuoveCandidature();
+		model.addAttribute("Lista_candidature", candidature);
+		return "VediCandidature";
+	}
+
+	
+	//ORDINAMENTO CANDIDATURE
+	
 	@GetMapping(value = "/OrderBy")
 	public String orderBy(@ModelAttribute("/OrderBy") @RequestParam("order_by") String order_by,
 			ArrayList<Candidatura> candidatura, ModelMap model) throws ClassNotFoundException, SQLException {
@@ -85,18 +114,8 @@ public class ControllerSpring extends HttpServlet {
 		return "VediCandidature";
 	}
 
-	@GetMapping(value = "/ResocontoCandidatura")
-	public String ResocontoCandidatura(@ModelAttribute("/ResocontoCandidatura") Candidatura c1,
-			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze, ModelMap model)
-			throws ClassNotFoundException, SQLException {
-		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
-		candidatura = c.resocontoCandidatura(c1.getId_candidatura());
-		model.addAttribute("ListaCandidature", candidatura);
-		PostgresCandidatura2Competenze comp = new PostgresCandidatura2Competenze();
-		competenze = comp.getCandidatura2Competenze((Long) (candidatura.get(0).getId_candidatura()));
-		model.addAttribute("listaCompetenze", competenze);
-		return "ResocontoCandidatura";
-	}
+	//RICERCA CANDIDATURE
+	
 	@GetMapping(value = "/cercaCandidaturaCompetenza")
 	public String cercaCandidaturaTitoloStudio(
 			@ModelAttribute("/cercaCandidaturaCompetenza") @RequestParam("comp") StringaCompetenza comp,
@@ -136,15 +155,17 @@ public class ControllerSpring extends HttpServlet {
 		model.addAttribute("Lista_candidature", candidature);
 		return "VediCandidature";
 	}
+	
+	
+	//MODIFICHE CANDIDATURA
 	@GetMapping(value = "/CambiaStato")
 	public String CambiaStato(@ModelAttribute("/CambiaStato") Candidatura c1, ArrayList<Candidatura> candidatura,
 			ModelMap model) throws ClassNotFoundException, SQLException {
 		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
-//		System.out.println("ID: "+c1.getId_candidatura()+"Stato: "+c1.getStato());
 		c.cambiaStato(c1.getId_candidatura(), c1.getStato());
 		return vediCandidature(candidatura, model);
 	}
-
+	
 	@GetMapping(value = "/CambiaStatoReoconto")
 	public String CambiaStatoResoconto(@ModelAttribute("/CambiaStatoResoconto") Candidatura c1,
 			ArrayList<Candidatura> candidatura, ArrayList<Candidatura2Competenze> competenze, ModelMap model)
@@ -159,14 +180,7 @@ public class ControllerSpring extends HttpServlet {
 		return "ResocontoCandidatura";
 	}
 
-	@GetMapping(value = "/VediNuoveCandidature")
-	public String vediNuoveCandidature(@ModelAttribute("/VediNuoveCandidature") ArrayList<Candidatura> candidatura,
-			ModelMap model) throws ClassNotFoundException, SQLException {
-		PostgresCandidaturaDAO c = new PostgresCandidaturaDAO();
-		ArrayList<Candidatura> candidature = c.vediNuoveCandidature();
-		model.addAttribute("Lista_candidature", candidature);
-		return "VediCandidature";
-	}
+	//INSERIMENTO CANDIDATURA
 
 	@GetMapping(value = "/addCandidatura")
 	public String addCandidatura(
@@ -199,19 +213,14 @@ public class ControllerSpring extends HttpServlet {
 
 	// COMPETENZE
 
-	@GetMapping(value = "/InserisciCompetenza")
-	public String inserisciCompetenza(@ModelAttribute("/InserisciCompetenza") ArrayList<Candidatura> candidatura,
-			ModelMap model) throws ClassNotFoundException, SQLException {
-		return "InserisciCompetenza";
-	}
-
+	//INSERIMENTO COMPETENZA
 	@GetMapping(value = "/addCompetenza")
 	public String addCompetenza(@ModelAttribute("/addCandidatura") ArrayList<String> competenze,
 			PostgresCompetenzeDAO competenza, ModelMap model) throws ClassNotFoundException {
-		competenza.inserisciCompetenza(competenza.getNomeCompetenza());
+		competenza.inserisciCompetenza(competenza.getNomeCompetenza().toUpperCase());
 		return vediCompetenze(competenze, model);
 	}
-
+	//RIMOZIONE COMPETENZA
 	@GetMapping(value = "/removeCompetenza")
 	public String removeCompetenza(@ModelAttribute("/removeCompetenza") ArrayList<String> competenze,
 			PostgresCompetenzeDAO competenza, ModelMap model) throws ClassNotFoundException {
@@ -219,7 +228,7 @@ public class ControllerSpring extends HttpServlet {
 
 		return vediCompetenze(competenze, model);
 	}
-
+	//VISTA COMPETENZA
 	@GetMapping(value = "/VediCompetenze")
 	public String vediCompetenze(@ModelAttribute("/VediCompetenze") ArrayList<String> competenze, ModelMap model)
 			throws ClassNotFoundException {

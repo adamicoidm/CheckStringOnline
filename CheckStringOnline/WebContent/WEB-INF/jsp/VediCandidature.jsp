@@ -46,7 +46,7 @@
 					<form action="cercaCandidaturaCompetenza" id='fieldsetSearch'>
 						Ricerca candidature con queste competenze:
 						<br>
-						<input type="text" name="comp" placeholder="Scrivi una competenza da cercare">
+						<input type="text" style="width:185px" name="comp" placeholder="es: HTML-CSS-JAVA">
 						<br><br>
 						<input type="submit" id="buttonSubmit" value="Cerca Candidatura">
 					</form>
