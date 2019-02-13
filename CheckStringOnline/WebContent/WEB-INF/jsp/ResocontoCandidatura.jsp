@@ -86,12 +86,16 @@
 		<tr>
 		<td>Cambia stato</td>
 		<td><br>
-		<% 
+		<% 	Object object= request.getAttribute("ListaCandidature");
+	
+		List<Candidatura> ListaCandidature = new ArrayList<Candidatura>();
+		ListaCandidature=(ArrayList<Candidatura>) object;
+		System.out.println(ListaCandidature);
 			table="";
 						table="<form action='CambiaStato' method='get'>";
 							table+="<input type='hidden'name='id_candidatura' value='"+lista_competenze.get(0).getId_candidatura()+"'>";
 							table+="<select name='stato'>";
-			 			//	table+="<option disabled selected >"+ListaCandidature.get(0).getStato()+"</option>";
+			 				table+="<option selected >"+ListaCandidature.get(0).getStato()+"</option>";
 			 					table+="<option value='Non interessante'>Non interessante</option>";
 			 					table+="<option value='Da rivedere'>Da rivedere</option>";
 			 					table+="<option value='Interessante'>Interessante</option>";
